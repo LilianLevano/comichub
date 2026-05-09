@@ -10,6 +10,6 @@ class Category extends Model
     use HasFactory;
 
     public function comics(){
-        return $this->hasMany(Comic::class);
+        return $this->hasMany(Comic::class , 'category_id', 'id');
     }
 }
