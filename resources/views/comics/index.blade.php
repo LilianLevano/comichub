@@ -1,4 +1,5 @@
 @foreach($comics as $comic)
-    <p>{{$comic}} <b>{{$comic->user}}</b></p>
+    <p>{{$comic}} <b>{{$comic->user}}</b> <br>
+    <hr> <em>{{$comic->category->name}}</em></p>
 
 @endforeach
