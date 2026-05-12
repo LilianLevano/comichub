@@ -8,7 +8,7 @@
                     <p class="text-gray-500 text-sm">{{ $comic->description }}</p>
                     <div class="flex gap-4 text-sm text-gray-400">
                         <span>✍️ {{ $comic->author }}</span>
-                        <span>📁 {{ $comic->category->name }}</span>
+                        <span> <a href="/categories/{{$comic->category->id}}" class="hover:text-blue-400 underline">📁 {{ $comic->category->name }}</a>  </span>
                         <span>📅 {{ $comic->release_date }}</span>
                     </div>
                     <div class="mt-3 pt-3 border-t border-black/10 text-xs text-gray-400 italic">
