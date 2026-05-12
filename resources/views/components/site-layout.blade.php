@@ -13,7 +13,7 @@
 </head>
 
 
-<body>
+<body class="p-5">
 
 <header class="flex flex-col items-center mt-8">
 
@@ -30,14 +30,17 @@
         </ul>
     </nav>
 
-    <div>
-        <h1>{{$header ?? ''}}</h1>
-    </div>
+
 </header>
 
 
 
-<main>
+<main class="mt-10">
+
+    <div class="text-3xl my-10 flex justify-center">
+        <h1>{{$header ?? ''}}</h1>
+    </div>
+
     {{$slot}}
 </main>
 </body>
