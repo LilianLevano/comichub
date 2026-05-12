@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
 
         Category::factory()
             ->sequence(
-                ['name' => 'Books'],
-                ['name' => 'Sport'],
-                ['name' => 'Kitchen'],
-                ['name' => 'Politics'],
-                ['name' => 'Video-Games'],
+                ['name' => 'DC Universe'],
+                ['name' => 'Marvel'],
+                ['name' => 'The Boys'],
+                ['name' => 'Invincible'],
+                ['name' => 'Other'],
             )
             ->count(5)
             ->create();
