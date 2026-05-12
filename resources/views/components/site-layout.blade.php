@@ -15,7 +15,21 @@
 
 <body>
 
-<header>
+<header class="flex flex-col items-center mt-8">
+
+    <nav class="w-[90%] max-w-5xl backdrop-blur-md shadow-xl rounded-3xl border border-black/10 px-10 py-5">
+        <ul class="flex justify-between items-center text-lg">
+            <div class="flex gap-8 ">
+                <x-nav-bar-element link="/" content="Home"/>
+                <x-nav-bar-element link="/categories" content="Categories"/>
+                <x-nav-bar-element link="/comics" content="Comics"/>
+            </div>
+
+            <span>ComicHub</span>
+
+        </ul>
+    </nav>
+
     <div>
         <h1>{{$header ?? ''}}</h1>
     </div>
