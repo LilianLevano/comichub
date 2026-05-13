@@ -39,7 +39,7 @@
                                 href="/categories/{{$category->id}}"
                                 class="flex items-center justify-between bg-gray-50 hover:bg-blue-50 border border-black/5 rounded-xl px-4 py-3 transition-all duration-300 hover:scale-[1.02] hover:shadow-md group"
                             >
-                <span class="font-semibold text-gray-800 group-hover:text-blue-500">
+                <span class="font-semibold text-gray-800 group-hover:text-blue-500 pr-4">
                     {{$teller}}. {{$category->name}}
                 </span>
 

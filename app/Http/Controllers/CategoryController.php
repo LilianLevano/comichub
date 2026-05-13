@@ -16,6 +16,16 @@ class CategoryController extends Controller
         return view('categories.index', compact('categories'));
     }
 
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('categories.show', compact('category'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -32,13 +42,6 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $categorie)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

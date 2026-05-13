@@ -2,7 +2,7 @@
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
         @foreach($categories as $category)
             <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6">
-                <h2 class="text-xl font-bold mb-4">{{ $category->name }}</h2>
+                <h2 class="text-xl font-bold mb-4"><a href="/categories/{{$category->id}}">{{ $category->name }}</a> </h2>
                 <ul class="flex flex-wrap gap-10">
 
                     @foreach($category->comics as $comic)
@@ -18,5 +18,7 @@
             </div>
         @endforeach
     </div>
+
+
 </x-site-layout>
 
