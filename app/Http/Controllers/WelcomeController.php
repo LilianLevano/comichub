@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comic;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
     public function index(){
-        return view('welcome');
+
+        $comic = Comic::latest()->first();
+        return view('welcome', compact('comic'));
     }
 }
