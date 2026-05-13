@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,11 @@ class WelcomeController extends Controller
     public function index(){
 
         $comic = Comic::latest()->first();
-        return view('welcome', compact('comic'));
+
+        $topCategories = Category::withCount('comics')
+            ->orderBy('comics_count', 'desc')
+            ->take(3)
+            ->get();
+        return view('welcome', compact('comic'), compact('topCategories'));
     }
 }
