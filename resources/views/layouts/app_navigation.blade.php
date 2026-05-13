@@ -77,8 +77,16 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-breeze.responsive-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
+                {{ __('Homepage') }}
+            </x-breeze.responsive-nav-link>
+
             <x-breeze.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-breeze.responsive-nav-link>
+
+            <x-breeze.responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                {{ __('Categories') }}
             </x-breeze.responsive-nav-link>
         </div>
 

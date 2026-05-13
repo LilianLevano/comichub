@@ -23,7 +23,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
+       return view('admin.categories.create');
     }
 
     /**
@@ -31,23 +32,32 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect('/admin/categories');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(fc $fc)
+    public function show($id)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(fc $fc)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**

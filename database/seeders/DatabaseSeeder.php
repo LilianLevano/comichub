@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Lilian Levano',
             'email' => 'lilian@levano.com',
-            'password' => '$2y$12$jIh.B2y9M63ecBCwINHt7eJF/ljMoTb/SHcFiJtvDNVCWskfrNQwm',
+            'password' => 'hey',
             'is_admin' => true,
         ]);
 
