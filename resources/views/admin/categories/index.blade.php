@@ -19,9 +19,9 @@
             <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6 group">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-bold group-hover:text-blue-400 transition-all duration-300">
-                        <a href="/admin/categories/{{ $category->id }}">{{ $category->name }}</a>
+                        <a href="/categories/{{ $category->id }}">{{ $category->name }}</a>
                     </h2>
-                    <a href="/categories/{{ $category->id }}/edit" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-blue-500 border border-black/10 hover:border-blue-400 rounded-lg transition-all duration-150">
+                    <a href="/admin/categories/{{ $category->id }}/edit" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-blue-500 border border-black/10 hover:border-blue-400 rounded-lg transition-all duration-150">
                         ✎ Edit
                     </a>
                 </div>
