@@ -21,6 +21,13 @@ class DatabaseSeeder extends Seeder
 
        User::factory(10)->create();
 
+        User::create([
+            'name' => 'Lilian Levano',
+            'email' => 'lilian@levano.com',
+            'password' => '$2y$12$jIh.B2y9M63ecBCwINHt7eJF/ljMoTb/SHcFiJtvDNVCWskfrNQwm',
+            'is_admin' => true,
+        ]);
+
         Category::factory()
             ->sequence(
                 ['name' => 'DC Universe'],
