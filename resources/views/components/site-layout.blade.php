@@ -17,7 +17,7 @@
     <main class="mt-10">
 
         <div class="flex justify-center my-10">
-            <h1 class="text-4xl font-bold tracking-tight text-gray-800 border-b-4 border-blue-400 pb-2">{{ $header ?? '' }}</h1>
+            <h1 class="text-4xl font-bold tracking-tight text-gray-800 border-b-4 border-blue-400 pb-2">{{ $header }}</h1>
         </div>
 
         {{$slot}}

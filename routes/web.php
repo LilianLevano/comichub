@@ -2,13 +2,12 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComicController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 
 // User zone
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[WelcomeController::class, 'index']);
 
 Route::resource('categories', CategoryController::class);
 Route::resource('comics', ComicController::class);

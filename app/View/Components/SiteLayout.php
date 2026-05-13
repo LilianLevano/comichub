@@ -12,8 +12,8 @@ class SiteLayout extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $title = 'Default',
-        public string $header = 'Default',
+        public string $title = 'ComicHub',
+        public string $header = 'ComicHub',
     )
     {}
 
