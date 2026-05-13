@@ -14,7 +14,7 @@ class WelcomeController extends Controller
 
         $topCategories = Category::withCount('comics')
             ->orderBy('comics_count', 'desc')
-            ->take(3)
+            ->take(5)
             ->get();
         return view('welcome', compact('comic'), compact('topCategories'));
     }
