@@ -24,6 +24,12 @@ Route::middleware('auth')->group(function () {
 
 
 // Admin zone
+Route::prefix('admin')->middleware( \App\Http\Middleware\IsAdmin::class)->name('admin.')->group( function() {
+
+    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class)->except(['show']);
+
+
+});
 
 
 // Public zone
