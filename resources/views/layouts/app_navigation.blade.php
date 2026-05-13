@@ -12,9 +12,19 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
+                    <x-breeze.nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
+                        {{ __('Homepage') }}
+                    </x-breeze.nav-link>
+
                     <x-breeze.nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-breeze.nav-link>
+
+                    <x-breeze.nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                        {{ __('Categories') }}
+                    </x-breeze.nav-link>
+
                 </div>
             </div>
 

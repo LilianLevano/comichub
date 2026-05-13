@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // User zone
-Route::get('/',[WelcomeController::class, 'index']);
+Route::get('/',[WelcomeController::class, 'index']) -> name('welcome');
 
 Route::resource('categories', CategoryController::class);
 Route::resource('comics', ComicController::class);
