@@ -18,7 +18,7 @@ class ComicFactory extends Factory
             'user_id' => $this->faker->numberBetween(1, 10),
             'release_date' => $this->faker->date(),
             'image_path' => $this->faker->imageUrl(),
-            'category_id' => $this->faker->numberBetween(1, 5),
+            'category_id' => $this->faker->numberBetween(1, 20),
         ];
     }
 }

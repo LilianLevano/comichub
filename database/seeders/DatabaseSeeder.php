@@ -27,11 +27,26 @@ class DatabaseSeeder extends Seeder
                 ['name' => 'Marvel'],
                 ['name' => 'The Boys'],
                 ['name' => 'Invincible'],
+                ['name' => 'Spawn'],
+                ['name' => 'Hellboy'],
+                ['name' => 'Transformers'],
+                ['name' => 'Teenage Mutant Ninja Turtles'],
+                ['name' => 'Sin City'],
+                ['name' => 'Watchmen'],
+                ['name' => 'Sandman'],
+                ['name' => 'Judge Dredd'],
+                ['name' => 'Saga'],
+                ['name' => 'Kick-Ass'],
+                ['name' => 'Witchblade'],
+                ['name' => 'Bloodshot'],
+                ['name' => 'X-O Manowar'],
+                ['name' => 'Bone'],
+                ['name' => 'Astro City'],
                 ['name' => 'Other'],
             )
-            ->count(5)
+            ->count(20)
             ->create();
 
-        Comic::factory(20)->create();
+        Comic::factory(50)->create();
     }
 }
