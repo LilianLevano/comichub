@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Comics') }}
+            {{ __('Edit Comics') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-1.5">
                         <label for="title" class="text-sm font-medium text-gray-700">Title of the comics</label>
-                        <input type="text" id="title" name="title" value="{{ old('title') }}"
+                        <input type="text" id="title" name="title" value="{{ old('title', $comic->title) }}"
                                class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                                placeholder="e.g. Batman - Year One"
                         />
@@ -22,7 +22,7 @@
                         @enderror
 
                         <label for="description" class="text-sm font-medium text-gray-700">Description of the comics</label>
-                        <input type="text" id="description" name="description" value="{{ old('description') }}"
+                        <input type="text" id="description" name="description" value="{{ old('description' , $comic->description) }}"
                                class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                                placeholder="Ex.'Batman - Year one' is a comics that talks about..."
                         />
@@ -31,7 +31,7 @@
                         @enderror
 
                         <label for="author" class="text-sm font-medium text-gray-700">Who wrote that comics?</label>
-                        <input type="text" id="author" name="author" value="{{ old('author') }}"
+                        <input type="text" id="author" name="author" value="{{ old('author' , $comic->author) }}"
                                class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                                placeholder="e.g. Frank Willer"
                         />
@@ -40,7 +40,7 @@
                         @enderror
 
                         <label for="release_date" class="text-sm font-medium text-gray-700">When was that comics released?</label>
-                        <input type="date" id="release_date" name="release_date" value="{{ old('author') }}"
+                        <input type="date" id="release_date" name="release_date" value="{{ old('release-date', $comic->release_date) }}"
                                class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
 
                         />
@@ -52,13 +52,15 @@
                         <select name="category_id" id="category_id" class="">
                             <option value="">-- Choisir une catégorie --</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" @selected(old('category_id', $comic->category_id) == $category->id)>
+                                    {{ $category->name }}
+                                </option>
                             @endforeach
                         </select>
+
                         @error('category_id')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                         @enderror
-
 
                         <script>
                             new TomSelect('#category_id', {
@@ -73,7 +75,7 @@
                             ← Cancel
                         </button>
                         <button type="submit" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white text-sm font-medium rounded-lg transition-all duration-150">
-                            Create
+                            Edit
                         </button>
                     </div>
                 </div>
