@@ -1,5 +1,6 @@
 <x-site-layout title="Comics" header="Comics">
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
+        {{ $comics->links() }}
         @foreach($comics as $comic)
             <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6 flex gap-6 group">
                 <img src="{{ $comic->image_path }}" alt="{{ $comic->title }}" class="w-64 h-80 object-cover rounded-xl">
@@ -17,5 +18,7 @@
                 </div>
             </div>
         @endforeach
+
+        {{ $comics->links('pagination::simple-tailwind') }}
     </div>
 </x-site-layout>
