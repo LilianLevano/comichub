@@ -6,13 +6,20 @@
         </h2>
     </x-slot>
 
+
+
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
+        <div class="flex justify-end">
+            <a href="/admin/comics/create" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white text-sm font-medium rounded-lg transition-all duration-150">
+                + New comics
+            </a>
+        </div>
         @foreach($comics as $comic)
             <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6 flex gap-6 group">
                 <img src="{{ $comic->image_path }}" alt="{{ $comic->title }}" class="w-64 h-80 object-cover rounded-xl">
                 <div class="flex flex-col gap-2 flex-1">
                     <h2 class="text-xl font-bold group-hover:cursor-pointer group-hover:text-blue-400 transition-all duration-300"><a href="/comics/{{$comic->id}}">{{ $comic->title }}</a> </h2>
-
+                    <p class="text-gray-500 text-sm">{{ $comic->description }}</p>
                     <div class="flex gap-4 text-sm text-gray-400">
                         <span>✍️ {{ $comic->author }}</span>
                         <span> <a href="/categories/{{$comic->category->id}}" class="hover:text-blue-400 underline">📁 {{ $comic->category->name }}</a>  </span>
