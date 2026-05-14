@@ -9,11 +9,7 @@
 
 
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
-        <div class="flex justify-end">
-            <a href="/admin/comics/create" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white text-sm font-medium rounded-lg transition-all duration-150">
-                + New comics
-            </a>
-        </div>
+        <x-make-button content="comics"/>
         @foreach($comics as $comic)
             <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6 flex gap-6 group">
                 <img src="{{ $comic->image_path }}" alt="{{ $comic->title }}" class="w-64 h-80 object-cover rounded-xl">
