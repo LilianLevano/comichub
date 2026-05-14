@@ -8,8 +8,9 @@
 
     <div class="w-[90%] max-w-lg mx-auto mt-8">
         <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6">
-            <form method="POST" action="/admin/comics">
+            <form method="POST" action="/admin/comics/{{$comic->id}}">
                 @csrf
+                @method('PATCH')
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-1.5">
                         <label for="title" class="text-sm font-medium text-gray-700">Title of the comics</label>

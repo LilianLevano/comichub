@@ -77,7 +77,7 @@ class ComicController extends Controller
 
         $comic = Comic::findOrFail($id);
 
-        $comic::create($validated);
+        $comic->update($validated);
         return redirect()->route('admin.comics.index');
     }
 
