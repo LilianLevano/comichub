@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->middleware( \App\Http\Middleware\IsAdmin::class)->name('admin.')->group( function() {
 
     Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class)->except(['show']);
-
+    Route::resource('comics', \App\Http\Controllers\Admin\ComicController::class)->except(['show']);
 
 });
 
