@@ -25,6 +25,10 @@
                         {{ __('Categories') }}
                     </x-breeze.nav-link>
 
+                    <x-breeze.nav-link :href="route('admin.comics.index')" :active="request()->routeIs('admin.comics.index')">
+                        {{ __('Comics') }}
+                    </x-breeze.nav-link>
+
                 </div>
             </div>
 
@@ -87,6 +91,10 @@
 
             <x-breeze.responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
                 {{ __('Categories') }}
+            </x-breeze.responsive-nav-link>
+
+            <x-breeze.responsive-nav-link :href="route('admin.comics.index')" :active="request()->routeIs('admin.comics.index')">
+                {{ __('Comics') }}
             </x-breeze.responsive-nav-link>
         </div>
 
