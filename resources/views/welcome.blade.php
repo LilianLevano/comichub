@@ -1,7 +1,3 @@
-@php
-    $teller = 1;
-@endphp
-
 <x-site-layout>
 
     <div class="flex justify-center max-w-[1500px] mx-auto ">
@@ -35,17 +31,9 @@
                     @foreach($topCategories as $category)
 
                         <li class="w-full">
-                            <a
-                                href="/categories/{{$category->id}}"
-                                class="flex items-center justify-between bg-gray-50 hover:bg-blue-50 border border-black/5 rounded-xl px-4 py-3 transition-all duration-300 hover:scale-[1.02] hover:shadow-md group"
-                            >
-                <span class="font-semibold text-gray-800 group-hover:text-blue-500 pr-4">
-                    {{$teller}}. {{$category->name}}
-                </span>
-
-                                <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-medium">
-                    {{$category->comics_count}} comics
-                </span>
+                            <a href="/categories/{{$category->id}}" class="flex items-center justify-between bg-gray-50 hover:bg-blue-50 border border-black/5 rounded-xl px-4 py-3 transition-all duration-300 hover:scale-[1.02] hover:shadow-md group">
+                                <span class="font-semibold text-gray-800 group-hover:text-blue-500 pr-4">{{$teller}}. {{$category->name}}</span>
+                                <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-medium">{{$category->comics_count}} comics</span>
                             </a>
                         </li>
 
@@ -59,6 +47,4 @@
             </div>
         </div>
     </div>
-
-<div class="mb-[100vh]"></div>
 </x-site-layout>

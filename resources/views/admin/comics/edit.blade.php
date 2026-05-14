@@ -50,7 +50,7 @@
 
                         <label for="category_id" class="text-sm font-medium text-gray-700">What is the category of that comics?</label>
                         <select name="category_id" id="category_id" class="">
-                            <option value="">-- Choisir une catégorie --</option>
+
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" @selected(old('category_id', $comic->category_id) == $category->id)>
                                     {{ $category->name }}
@@ -71,12 +71,8 @@
                     </div>
 
                     <div class="flex justify-between items-center mt-2">
-                        <button onclick="history.back()" type="button" class="text-sm text-gray-400 hover:text-gray-600 transition-colors duration-150">
-                            ← Cancel
-                        </button>
-                        <button type="submit" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white text-sm font-medium rounded-lg transition-all duration-150">
-                            Edit
-                        </button>
+                        <x-cancel-button/>
+                        <x-save-create-button content="Edit"/>
                     </div>
                 </div>
             </form>

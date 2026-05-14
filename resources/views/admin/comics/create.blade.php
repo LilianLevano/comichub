@@ -69,12 +69,8 @@
                     </div>
 
                     <div class="flex justify-between items-center mt-2">
-                        <button onclick="history.back()" type="button" class="text-sm text-gray-400 hover:text-gray-600 transition-colors duration-150">
-                            ← Cancel
-                        </button>
-                        <button type="submit" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 active:scale-95 text-white text-sm font-medium rounded-lg transition-all duration-150">
-                            Create
-                        </button>
+                        <x-cancel-button/>
+                        <x-save-create-button content="Create"/>
                     </div>
                 </div>
             </form>

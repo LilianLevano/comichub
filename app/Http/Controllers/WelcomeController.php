@@ -11,11 +11,12 @@ class WelcomeController extends Controller
     public function index(){
 
         $comic = Comic::latest()->first();
+        $teller = 1;
 
         $topCategories = Category::withCount('comics')
             ->orderBy('comics_count', 'desc')
             ->take(5)
             ->get();
-        return view('welcome', compact('comic'), compact('topCategories'));
+        return view('welcome', compact('comic'), compact('topCategories', 'teller'));
     }
 }
