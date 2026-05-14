@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class ComicController extends Controller
      */
     public function create()
     {
-
+        $categories = Category::all();
+        return view('admin.comics.create', compact('categories'));
     }
 
     /**
@@ -30,7 +32,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $validated = $request->validate([
+            'title'       => ['required', 'string', 'max:50'],
+            'description' => ['required', 'string', 'max:255'],
+            'author'      => ['required', 'string'],
+            'release_date'=> ['required', 'date'],
+            'category_id' => ['required'],
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        Comic::create($validated);
+        return redirect()->route('admin.comics.index');
+
     }
 
 
