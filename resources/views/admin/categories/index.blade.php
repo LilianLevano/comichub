@@ -16,9 +16,7 @@
                         <a href="/categories/{{ $category->id }}">{{ $category->name }}</a>
                     </h2>
                     <div class="flex items-center gap-2">
-                        <a href="/admin/categories/{{ $category->id }}/edit" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-blue-500 border border-black/10 hover:border-blue-400 rounded-lg transition-all duration-150">
-                            ✎ Edit
-                        </a>
+                        <x-edit-button content="categories" link="{{$category->id}}"/>
                         <form method="POST" action="/admin/categories/{{ $category->id }}">
                             @csrf
                             @method('DELETE')
