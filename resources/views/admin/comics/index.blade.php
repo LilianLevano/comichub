@@ -27,6 +27,7 @@
                         Article published by <span class="font-semibold text-gray-500">{{ $comic->user->name }}</span> on {{ $comic->created_at->format('F j, Y') }}
                     </div>
                     <x-edit-button content="comics" link="{{$comic->id}}"/>
+                    <x-delete-button link="comics/{{$comic->id}}" content="{{$comic->title}}"/>
                 </div>
 
             </div>

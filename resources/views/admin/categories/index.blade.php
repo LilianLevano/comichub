@@ -17,15 +17,10 @@
                     </h2>
                     <div class="flex items-center gap-2">
                         <x-edit-button content="categories" link="{{$category->id}}"/>
-                        <form method="POST" action="/admin/categories/{{ $category->id }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                    onclick="return confirm('Delete {{ $category->name }}? Deleting a category will destroy every comics that has that category')"
-                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-red-400 hover:text-red-600 border border-black/10 hover:border-red-300 rounded-lg transition-all duration-150">
-                                ✕ Delete
-                            </button>
-                        </form>
+
+                        <x-delete-button link="categories/{{$category->id}}" content="{{$category->name}}" confirm="true" />
+
+
                     </div>
                 </div>
                 <ul class="flex flex-wrap gap-10">
