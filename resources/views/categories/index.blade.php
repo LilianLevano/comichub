@@ -8,7 +8,7 @@
 
                     @foreach($category->comics as $comic)
                         <li>
-                            <a href="/comics/{{ $comic->id }}" class="px-4 py-2 rounded-xl bg-blue-100 text-blue-600 hover:bg-blue-400 hover:text-white transition-all duration-300">
+                            <a href="/comics/{{ $comic->id }}" class="px-4 py-2 rounded-xl bg-blue-100 text-blue-600 hover:bg-blue-400 hover:text-white transition-all duration-300 truncate">
                                 {{ $comic->title }}
                             </a>
                         </li>
