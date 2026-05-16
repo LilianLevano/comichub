@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
-
+        {{ $categories->links() }}
       <x-make-button content="categories"/>
 
         @foreach($categories as $category)
@@ -34,6 +34,7 @@
                 </ul>
             </div>
         @endforeach
+        {{ $categories->links('pagination::simple-tailwind') }}
     </div>
 
 </x-app-layout>
