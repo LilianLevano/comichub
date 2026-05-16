@@ -19,14 +19,14 @@
                 <div class="flex flex-col gap-2 flex-1">
                     <h2 class="text-xl font-bold group-hover:cursor-pointer group-hover:text-blue-400 transition-all duration-300"><a href="/comics/{{$comic->id}}">{{ $comic->title }}</a> </h2>
                     <p class="text-gray-500 text-sm break-words max-w-2xl">{{ $comic->description }}</p>
-                    <div class="flex gap-4 text-sm text-gray-400">
-                        <span>✍️ {{ $comic->author }}</span>
-                        <span> <a href="/categories/{{$comic->category->id}}" class="hover:text-blue-400 underline">📁 {{ $comic->category->name }}</a>  </span>
-                        <span>📅 {{ $comic->release_date }}</span>
-                    </div>
-                    <div class="mt-3 pt-3 border-t border-black/10 text-xs text-gray-400 italic">
-                        Article published by <span class="font-semibold text-gray-500">{{ $comic->user->name }}</span> on {{ $comic->created_at->format('F j, Y') }}
-                    </div>
+                    <x-comic-extra-information
+                        author="{{ $comic->author }}"
+                        category_id="{{$comic->category->id}}"
+                        category_name="{{ $comic->category->name }}"
+                        release_date="{{ $comic->release_date }}"
+                        user_name="{{ $comic->user->name }}"
+                        created_at="{{ $comic->created_at->format('F j, Y') }}"
+                    />
                     <x-edit-button content="comics" link="{{$comic->id}}"/>
                     <x-delete-button link="comics/{{$comic->id}}" content="{{$comic->title}}"/>
                 </div>
