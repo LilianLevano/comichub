@@ -66,15 +66,40 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validated = $request->validate([
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'email', 'unique:users,email,' . $user->id],
+            'password' => ['nullable', 'string', 'min:8'],
+            'birthday' => ['required', 'date'],
+            'bio'      => ['required', 'string'],
+            'image'    => ['nullable', 'image', 'max:2048'],
+            'is_admin' => ['nullable', 'boolean'],
+        ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image_path'] = $request->file('image')->store('avatars', 'public');
+        }
+
+        if ($validated['password']) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+
+        $validated['is_admin'] = $request->boolean('is_admin');
+
+        $user->update($validated);
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -82,6 +107,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.users.index');
     }
 }
