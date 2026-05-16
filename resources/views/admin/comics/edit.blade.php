@@ -8,7 +8,7 @@
 
     <div class="w-[90%] max-w-lg mx-auto mt-8">
         <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6">
-            <form method="POST" action="/admin/comics/{{$comic->id}}">
+            <form method="POST" action="/admin/comics/{{$comic->id}}" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="flex flex-col gap-4">
@@ -60,6 +60,14 @@
                         </select>
 
                         @error('category_id')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
+
+                        <label for="image" class="text-sm font-medium text-gray-700">Cover image</label>
+                        <input type="file" id="image" name="image" accept="image/*"
+                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
+                        />
+                        @error('image')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                         @enderror
 
