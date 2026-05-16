@@ -3,7 +3,6 @@
         {{ $users->links() }}
         <div class="flex items-baseline gap-3 mb-2">
             <h1 class="text-3xl font-semibold tracking-tight text-gray-900">Members</h1>
-            <span class="text-sm text-gray-400">{{ $users->total() }} users</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -21,7 +20,12 @@
 
                     {{-- Info --}}
                     <div class="flex flex-col gap-1 min-w-0">
-                        <p class="font-semibold text-gray-900 truncate"><a class="hover:text-blue-400" href="/users/{{$user->id}}">{{ $user->name }}</a> </p>
+                        <p class="font-semibold text-gray-900 truncate">
+                            <a class="hover:text-blue-400" href="/users/{{$user->id}}">{{ $user->name }}</a>
+                            @if($user->is_admin)
+                                <span class="ml-1 text-xs bg-gray-900 text-white rounded-full px-2 py-0.5 font-medium">admin</span>
+                            @endif
+                        </p>
 
                         @if($user->birthday)
                             <p class="text-xs text-gray-400 flex items-center gap-1">

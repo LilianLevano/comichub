@@ -24,7 +24,12 @@
                     </div>
                 </div>
 
-                <h1 class="text-2xl font-semibold text-gray-900">{{ $user->name }}</h1>
+                <h1 class="text-2xl font-semibold text-gray-900 flex items-center gap-2">
+                    {{ $user->name }}
+                    @if($user->is_admin)
+                        <span class="text-xs bg-gray-900 text-white rounded-full px-2 py-0.5 font-medium">admin</span>
+                    @endif
+                </h1>
 
                 @if($user->birthday)
                     <p class="text-sm text-gray-400 flex items-center gap-1 mt-1">
