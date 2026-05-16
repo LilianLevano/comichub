@@ -31,6 +31,11 @@
                         <x-breeze.nav-link :href="route('admin.comics.index')" :active="request()->routeIs('admin.comics.index')">
                             {{ __('Comics') }}
                         </x-breeze.nav-link>
+
+
+                        <x-breeze.nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                            {{ __('Users') }}
+                        </x-breeze.nav-link>
                     @endif
 
                 </div>
@@ -93,6 +98,7 @@
                 {{ __('Dashboard') }}
             </x-breeze.responsive-nav-link>
 
+            @if(auth()->user()->is_admin)
             <x-breeze.responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
                 {{ __('Categories') }}
             </x-breeze.responsive-nav-link>
@@ -100,6 +106,13 @@
             <x-breeze.responsive-nav-link :href="route('admin.comics.index')" :active="request()->routeIs('admin.comics.index')">
                 {{ __('Comics') }}
             </x-breeze.responsive-nav-link>
+
+
+                <x-breeze.responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                    {{ __('Users') }}
+                </x-breeze.responsive-nav-link>
+
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

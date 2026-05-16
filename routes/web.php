@@ -31,6 +31,7 @@ Route::prefix('admin')->middleware( \App\Http\Middleware\IsAdmin::class)->name('
 
     Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class)->except(['show']);
     Route::resource('comics', \App\Http\Controllers\Admin\ComicController::class)->except(['show']);
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
 
 });
 
