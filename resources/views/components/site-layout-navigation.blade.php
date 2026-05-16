@@ -3,7 +3,8 @@
     $menu_items = [
         ['name'=>'Home', 'url'=>'/'],
         ['name'=>'Categories', 'url'=>'/categories'],
-        ['name'=>'Comics', 'url'=>'/comics']
+        ['name'=>'Comics', 'url'=>'/comics'],
+        ['name'=>'Users', 'url'=>'/users'],
 ]
 
 @endphp

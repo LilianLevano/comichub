@@ -33,7 +33,7 @@ Route::prefix('admin')->middleware( \App\Http\Middleware\IsAdmin::class)->name('
 
 
 // Public zone
-
+Route::resource('users', \App\Http\Controllers\UserController::class);
 
 
 

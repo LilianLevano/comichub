@@ -24,8 +24,21 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Lilian Levano',
             'email' => 'lilian@levano.com',
+            'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+            'image_path' => 'images/default.jpg',
+            'birthday' => '1990-01-01',
             'password' => 'hey',
             'is_admin' => true,
+        ]);
+
+        User::create([
+            'name' => 'Test',
+            'email' => 'test@test.com',
+            'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+            'image_path' => 'images/default.jpg',
+            'birthday' => '1990-01-01',
+            'password' => 'test',
+            'is_admin' => false,
         ]);
 
         Category::factory()
