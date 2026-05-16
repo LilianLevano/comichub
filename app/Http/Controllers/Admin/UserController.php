@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -31,7 +31,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'email', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'birthday' => ['required', 'date'],
+            'bio'      => ['required', 'string'],
+            'image'    => ['nullable', 'image', 'max:2048'],
+            'is_admin' => ['nullable', 'boolean'],
+        ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image_path'] = $request->file('image')->store('avatars', 'public');
+        }
+
+        $validated['password'] = bcrypt($validated['password']);
+        $validated['is_admin'] = $request->boolean('is_admin');
+
+        User::create($validated);
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
