@@ -41,6 +41,16 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
         ]);
 
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@ehb.be',
+            'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+            'image_path' => 'images/default.jpg',
+            'birthday' => '1990-01-01',
+            'password' => 'Password!321',
+            'is_admin' => true,
+        ]);
+
         Category::factory()
             ->sequence(
                 ['name' => 'DC Universe'],
