@@ -21,13 +21,17 @@
                         {{ __('Dashboard') }}
                     </x-breeze.nav-link>
 
-                    <x-breeze.nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                        {{ __('Categories') }}
-                    </x-breeze.nav-link>
+                    @if(auth()->user()->is_admin)
 
-                    <x-breeze.nav-link :href="route('admin.comics.index')" :active="request()->routeIs('admin.comics.index')">
-                        {{ __('Comics') }}
-                    </x-breeze.nav-link>
+
+                        <x-breeze.nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                            {{ __('Categories') }}
+                        </x-breeze.nav-link>
+
+                        <x-breeze.nav-link :href="route('admin.comics.index')" :active="request()->routeIs('admin.comics.index')">
+                            {{ __('Comics') }}
+                        </x-breeze.nav-link>
+                    @endif
 
                 </div>
             </div>
@@ -49,7 +53,7 @@
 
                     <x-slot name="content">
                         <x-breeze.dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Profile Settings') }}
                         </x-breeze.dropdown-link>
 
                         <!-- Authentication -->
@@ -107,7 +111,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-breeze.responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Profile Settings') }}
                 </x-breeze.responsive-nav-link>
 
                 <!-- Authentication -->
