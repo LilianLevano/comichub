@@ -22,7 +22,32 @@
 
             @auth
                 <div class="flex items-center gap-3">
-                    <span class="text-m font-medium text-gray-700 border-b border-black/50 hover:border-black hover:text-gray-950"> <a href="/dashboard">{{ auth()->user()->name }}</a> </span>
+                    @if(auth()->user()->is_admin)
+                        {{-- Admin : lien vers le dashboard --}}
+                        <span class="text-m font-medium text-gray-700 border-b border-black/50 hover:border-black hover:text-gray-950">
+            <a href="/dashboard">{{ auth()->user()->name }}</a>
+        </span>
+                    @else
+                        {{-- User simple : dropdown --}}
+                        <div class="relative" x-data="{ open: false }">
+                            <button @click="open = !open" class="text-m font-medium text-gray-700 border-b border-black/50 hover:border-black hover:text-gray-950">
+                                {{ auth()->user()->name }}
+                            </button>
+
+                            <div x-show="open" @click.outside="open = false" x-transition
+                                 class="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
+                                <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    Profile
+                                </a>
+                                <form method="POST" action="/logout">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                        Log out
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             @else
                 <div class="flex items-center gap-4 text-sm font-medium">
