@@ -21,7 +21,7 @@
 
                     {{-- Info --}}
                     <div class="flex flex-col gap-1 min-w-0">
-                        <p class="font-semibold text-gray-900 truncate">{{ $user->name }}</p>
+                        <p class="font-semibold text-gray-900 truncate"><a class="hover:text-blue-400" href="/users/{{$user->id}}">{{ $user->name }}</a> </p>
 
                         @if($user->birthday)
                             <p class="text-xs text-gray-400 flex items-center gap-1">
