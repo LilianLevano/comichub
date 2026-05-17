@@ -98,7 +98,9 @@ class DatabaseSeeder extends Seeder
                 ['name' => 'Western'],
             ) ->count(15) -> create();
 
-        Comic::factory(20)->create();
+        Comic::factory(20)->create()->each(function ($comic) {
+            $comic->tags()->attach(Tag::inRandomOrder()->take(rand(1, 4))->pluck('id'));
+        });
 
         Faq::factory(20)->create();
     }
