@@ -40,7 +40,7 @@ class ComicController extends Controller
             'author'      => ['required', 'string'],
             'release_date'=> ['required', 'date'],
             'category_id' => ['required'],
-            'image'       => ['required', 'image', 'max:2048'],
+            'image'       => ['image', 'max:2048'],
         ]);
 
         $validated['user_id'] = auth()->id();
@@ -74,17 +74,23 @@ class ComicController extends Controller
             'author'      => ['required', 'string'],
             'release_date'=> ['required', 'date'],
             'category_id' => ['required'],
-            'image'       => ['required', 'image', 'max:2048'],
+            'image'       => ['image', 'max:2048'],
 
         ]);
 
 
         $validated['user_id'] = auth()->id();
-        $path = $request->file('image')->store('covers', 'public');
+
+        if($request->file('image')) {
+            $path = $request->file('image')->store('covers', 'public');
+            $validated['image_path'] = $path;
+        }
+
+
 
         $comic = Comic::findOrFail($id);
 
-        $validated['image_path'] = $path;
+
         $comic->update($validated);
         return redirect()->route('admin.comics.index');
     }
