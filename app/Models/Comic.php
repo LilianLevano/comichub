@@ -20,12 +20,12 @@ class Comic extends Model
     }
 
     public function comments() {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'comic_id', 'id');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'comic_tag', 'comic_id', 'tag_id');
     }
 
 }
