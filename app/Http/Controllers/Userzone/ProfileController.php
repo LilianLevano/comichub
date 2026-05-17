@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Userzone;
-
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
@@ -27,13 +27,22 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();       // neem de user die geconnecteerd is op die sessie
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $user->fill($request->safe()->except('image_path'));    // geeft alle gevalideerde informatie die in rules() in ProfileUpdateRequest zijn gedefinieerd behalve image_path
+
+        if ($user->isDirty('email')) {                         // als de mail gewijzigd werd dan verliest hij de verificatie
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        if ($request->hasFile('image_path')) {                      // controleert of een image werd gestuurd
+            if ($user->image_path) {
+                Storage::disk('public')->delete($user->image_path);     // als de user een oude profiel foto vervangt wordt de oude verwijderd
+            }
+            $user->image_path = $request->file('image_path')->store('avatars', 'public');       // slaat nieuwe foto en onthoud de path voor die user
+        }
+
+        $user->save();                          // slaat alles op in database
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

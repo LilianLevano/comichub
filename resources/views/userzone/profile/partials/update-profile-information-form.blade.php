@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -21,6 +21,37 @@
             <x-breeze.input-label for="name" :value="__('Name')" />
             <x-breeze.text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-breeze.input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+        <div>
+            <x-breeze.input-label for="bio" :value="__('Bio')" />
+            <x-breeze.text-input id="bio" name="bio" type="text" class="mt-1 block w-full" :value="old('bio', $user->bio)" required autofocus autocomplete="bio" />
+            <x-breeze.input-error class="mt-2" :messages="$errors->get('bio')" />
+        </div>
+
+        <div>
+            <x-breeze.input-label for="birthday" :value="__('Birthday')" />
+            <x-breeze.text-input id="birthday" name="birthday" type="date" class="mt-1 block w-full" :value="old('birthday', $user->birthday ? \Carbon\Carbon::parse($user->birthday)->format('Y-m-d') : '')" autocomplete="bday" />
+            <x-breeze.input-error class="mt-2" :messages="$errors->get('birthday')" />
+        </div>
+
+        <div>
+            <x-breeze.input-label for="image_path" :value="__('Profile Picture')" />
+
+            @if ($user->image_path)
+                <div class="mt-2">
+                    <img src="{{ Storage::url($user->image_path) }}" alt="Current profile picture" class="w-20 h-20 rounded-full object-cover" />
+                </div>
+            @endif
+
+            <input
+                id="image_path"
+                name="image_path"
+                type="file"
+                accept="image/*"
+                class="mt-1 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
+            />
+            <x-breeze.input-error class="mt-2" :messages="$errors->get('image_path')" />
         </div>
 
         <div>
