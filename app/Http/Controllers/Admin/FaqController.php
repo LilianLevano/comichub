@@ -88,6 +88,8 @@ class FaqController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $faq = Faq::findOrFail($id);
+        $faq->delete();
+        return redirect()->route('admin.faqs.index');
     }
 }
