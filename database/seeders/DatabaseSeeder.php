@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Comic;
+use App\Models\Faq;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -77,6 +78,8 @@ class DatabaseSeeder extends Seeder
             ->count(20)
             ->create();
 
-        Comic::factory(50)->create();
+        Comic::factory(20)->create();
+
+        Faq::factory(20)->create();
     }
 }

@@ -5,6 +5,7 @@
         ['name'=>'Categories', 'url'=>'/categories'],
         ['name'=>'Comics', 'url'=>'/comics'],
         ['name'=>'Users', 'url'=>'/users'],
+        ['name'=>'Faqs', 'url'=>'/faqs']
 ]
 
 @endphp
