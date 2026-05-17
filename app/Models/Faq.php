@@ -15,6 +15,7 @@ class Faq extends Model
         'category_id',
         'user',
         'user_id',
+        'answer',
     ];
 
     public function user(){

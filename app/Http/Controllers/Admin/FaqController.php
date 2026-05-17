@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class FaqController extends Controller
      */
     public function create()
     {
-        return view('admin.faqs.create');
+        $categories = Category::all();
+        return view('admin.faqs.create', compact('categories'));
     }
 
     /**
@@ -30,7 +32,20 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'question'    => ['required', 'string', 'max:255'],
+            'answer'      => ['nullable', 'string'],
+            'category_id' => ['required', 'exists:categories,id'],
+        ]);
+
+        Faq::create([
+            'question'    => $request->question,
+            'answer'      => $request->answer,
+            'category_id' => $request->category_id,
+            'user_id'     => auth()->id(),
+        ]);
+
+        return redirect()->route('admin.faqs.index');
     }
 
     /**
@@ -46,7 +61,9 @@ class FaqController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $faq = Faq::findOrFail($id);
+        $categories = Category::all();
+        return view('admin.faqs.edit', compact('faq', 'categories'));
     }
 
     /**
@@ -54,7 +71,16 @@ class FaqController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'question'    => ['required', 'string', 'max:255'],
+            'answer'      => ['nullable', 'string'],
+            'category_id' => ['required', 'exists:categories,id'],
+        ]);
+
+        $faq = Faq::findOrFail($id);
+        $faq->update($request->only('question', 'answer', 'category_id'));
+
+        return redirect()->route('admin.faqs.index');
     }
 
     /**
