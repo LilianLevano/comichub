@@ -1,10 +1,18 @@
-<x-site-layout title="FAQS">
+<x-app-layout>
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('FAQS - Admin') }}
+        </h2>
+    </x-slot>
+
     <div class="w-[90%] max-w-4xl mx-auto mt-8">
         {{ $faqs->links() }}
-        <h1 class="text-2xl font-semibold text-gray-800 mb-6">FAQs</h1>
 
-        <div class="flex flex-col gap-4">
-            @forelse ($faqs as $faq)
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6">FAQs</h1>
+        <x-make-button content="faqs"/>
+        <div class="flex flex-col gap-4 mt-4">
+            @foreach ($faqs as $faq)
                 <div onclick="window.location='{{ route('faqs.show', $faq->id) }}'"
                      class="cursor-pointer bg-white rounded-2xl shadow-sm border border-black/10 p-5 hover:shadow-md hover:border-black/20 transition">
                     <div class="flex items-start justify-between gap-4">
@@ -13,7 +21,7 @@
                     </div>
 
                     <p class="text-sm text-gray-600 mt-2">
-                        {{ $faq->answer ? Str::limit($faq->answer, 100) : 'No answer yet.' }}
+                        {{ $faq->answer ? : 'No answer yet.' }}
                     </p>
 
                     <div class="flex items-center gap-3 mt-4 text-xs text-gray-400">
@@ -26,12 +34,17 @@
                             </a>
                         </span>
                     </div>
+                    <div class="flex gap-5 mt-5">
+                        <x-edit-button content="faqs" link="{{$faq->id}}"/>
+                        <x-delete-button link="faqs/{{$faq->id}}" content="{{$faq->question}}"/>
+                    </div>
+
                 </div>
-            @empty
-                <p class="text-sm text-gray-500">No FAQs yet.</p>
-            @endforelse
+
+            @endforeach
         </div>
 
         {{ $faqs->links('pagination::simple-tailwind') }}
+
     </div>
-</x-site-layout>
+</x-app-layout>

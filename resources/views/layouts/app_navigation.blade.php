@@ -36,6 +36,11 @@
                         <x-breeze.nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                             {{ __('Users') }}
                         </x-breeze.nav-link>
+
+
+                        <x-breeze.nav-link :href="route('admin.faqs.index')" :active="request()->routeIs('admin.faqs.index')">
+                            {{ __('Faqs') }}
+                        </x-breeze.nav-link>
                     @endif
 
                 </div>
@@ -110,6 +115,11 @@
 
                 <x-breeze.responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                     {{ __('Users') }}
+                </x-breeze.responsive-nav-link>
+
+
+                <x-breeze.responsive-nav-link :href="route('admin.faqs.index')" :active="request()->routeIs('admin.faqs.index')">
+                    {{ __('Faqs') }}
                 </x-breeze.responsive-nav-link>
 
             @endif
