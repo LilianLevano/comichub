@@ -1,9 +1,11 @@
 1. vragen over login systeem "Enkel admins kunnen een nieuwe gebruiker manueel aanmaken (en deze al dan niet admin maken)"
 
-2. een ingelogde user kan ZIJN data aanpassen
-
 3. FAQ pagina full
 
 4. Contact pagina full
 
 5. Readme
+
+6. vragen of profilecontroller en usercontroller samen ok zijn
+
+7. refactor

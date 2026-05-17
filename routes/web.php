@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,8 +11,8 @@ use Illuminate\Support\Facades\Route;
 // User zone
 Route::get('/',[WelcomeController::class, 'index']) -> name('welcome');
 
-Route::resource('categories', CategoryController::class);
-Route::resource('comics', ComicController::class);
+Route::resource('categories', CategoryController::class)->except(['edit', 'create', 'update']);
+Route::resource('comics', ComicController::class)->except(['edit', 'create', 'update']);
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
@@ -37,7 +38,8 @@ Route::prefix('admin')->middleware( \App\Http\Middleware\IsAdmin::class)->name('
 
 
 // Public zone
-Route::resource('users', \App\Http\Controllers\UserController::class);
+Route::resource('users', \App\Http\Controllers\UserController::class)->except(['edit', 'create', 'update']);
+Route::resource('faqs', FaqController::class)->except(['edit', 'create', 'update']);
 
 
 
