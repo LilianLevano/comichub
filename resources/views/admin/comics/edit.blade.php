@@ -66,7 +66,7 @@
 
 
 
-                        <label for="image" class="text-sm font-medium text-gray-700">Cover image (Let it empty to not change it)</label>
+                        <label for="image" class="text-sm font-medium text-gray-700">Current cover image (Let it empty to not change it)</label>
 
                         @if ($comic->image_path)
                             <img src="{{ Storage::url($comic->image_path) }}" alt="Current cover" class="w-32 h-44 object-cover rounded-lg border border-black/10" />

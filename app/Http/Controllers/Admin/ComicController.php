@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ComicController extends Controller
 {
@@ -69,27 +70,24 @@ class ComicController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'title'       => ['required', 'string', 'max:50'],
-            'description' => ['required', 'string', 'max:255'],
-            'author'      => ['required', 'string'],
-            'release_date'=> ['required', 'date'],
-            'category_id' => ['required'],
-            'image'       => ['image', 'max:2048'],
-
+            'title'        => ['required', 'string', 'max:50'],
+            'description'  => ['required', 'string', 'max:255'],
+            'author'       => ['required', 'string'],
+            'release_date' => ['required', 'date'],
+            'category_id'  => ['required'],
+            'image'        => ['nullable', 'image', 'max:2048'],
         ]);
-
 
         $validated['user_id'] = auth()->id();
 
-        if($request->file('image')) {
-            $path = $request->file('image')->store('covers', 'public');
-            $validated['image_path'] = $path;
-        }
-
-
-
         $comic = Comic::findOrFail($id);
 
+        if ($request->hasFile('image')) {
+            if ($comic->image_path) {
+                Storage::disk('public')->delete($comic->image_path); // verwijder de oude cover
+            }
+            $validated['image_path'] = $request->file('image')->store('covers', 'public');
+        }
 
         $comic->update($validated);
         return redirect()->route('admin.comics.index');
