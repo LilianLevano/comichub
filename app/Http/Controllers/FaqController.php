@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FaqAsked;
 use App\Models\Category;
 use App\Models\Faq;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FaqController extends Controller
 {
@@ -45,11 +47,14 @@ class FaqController extends Controller
             'category_id' => ['required', 'exists:categories,id'],
         ]);
 
-        Faq::create([
+        $faq = Faq::create([
             'question'    => $request->question,
             'category_id' => $request->category_id,
             'user_id'        => auth()->id(),
         ]);
+
+
+        Mail::to(config('mail.admin_address'))->send(new FaqAsked($faq));
 
         return redirect()->route('faqs.index');
     }
