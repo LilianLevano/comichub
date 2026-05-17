@@ -1,11 +1,12 @@
 @php
     $menu_items = [
         ['name'=>'Home', 'url'=>'/'],
-        ['name'=>'Categories', 'url'=>'/categories'],
         ['name'=>'Comics', 'url'=>'/comics'],
-        ['name'=>'Users', 'url'=>'/users'],
+        ['name'=>'Categories', 'url'=>'/categories'],
+        ['name'=>'Tags', 'url'=>'/tags'],
         ['name'=>'Faqs', 'url'=>'/faqs'],
-        ['name'=>'Tags', 'url'=>'/tags']
+        ['name'=>'Users', 'url'=>'/users'],
+
     ]
 @endphp
 
