@@ -62,11 +62,28 @@
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                         @enderror
 
+                        <label for="tags" class="text-sm font-medium text-gray-700">Tags</label>
+                        <select name="tags[]" id="tags" multiple>
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}" @selected(in_array($tag->id, old('tags', [])))>
+                                    {{ $tag->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('tags')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
+
 
                         <script>
                             new TomSelect('#category_id', {
                                 placeholder: 'Search for a category...',
                                 maxOptions: 50,
+                            });
+
+                            new TomSelect('#tags', {
+                                plugins: ['remove_button'],
+                                placeholder: 'Select tags...',
                             });
                         </script>
                     </div>

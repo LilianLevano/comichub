@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comic;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,7 +26,8 @@ class ComicController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.comics.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.comics.create', compact('categories', 'tags'));
     }
 
     /**
@@ -42,13 +44,16 @@ class ComicController extends Controller
             'release_date'=> ['required', 'date'],
             'category_id' => ['required'],
             'image'       => ['image', 'max:2048'],
+            'tags'        => ['nullable', 'array'],
+            'tags.*'      => ['exists:tags,id'],
         ]);
 
         $validated['user_id'] = auth()->id();
         $path = $request->file('image')->store('covers', 'public');
 
         $validated['image_path'] = $path;
-        Comic::create($validated);
+        $comic = Comic::create($validated);
+        $comic->tags()->sync($request->tags ?? []);
         return redirect()->route('admin.comics.index');
 
     }
@@ -61,7 +66,8 @@ class ComicController extends Controller
     {
         $comic = Comic::findOrFail($id);
         $categories = Category::all();
-        return view('admin.comics.edit', compact('comic', 'categories'));
+        $tags = Tag::all();
+        return view('admin.comics.edit', compact('comic', 'categories', 'tags'));
     }
 
     /**
@@ -76,6 +82,8 @@ class ComicController extends Controller
             'release_date' => ['required', 'date'],
             'category_id'  => ['required'],
             'image'        => ['nullable', 'image', 'max:2048'],
+            'tags'        => ['nullable', 'array'],
+            'tags.*'      => ['exists:tags,id'],
         ]);
 
         $validated['user_id'] = auth()->id();
@@ -90,6 +98,7 @@ class ComicController extends Controller
         }
 
         $comic->update($validated);
+        $comic->tags()->sync($request->tags ?? []);
         return redirect()->route('admin.comics.index');
     }
 

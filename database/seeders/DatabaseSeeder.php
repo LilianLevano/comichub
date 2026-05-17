@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Comic;
 use App\Models\Faq;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -77,6 +78,25 @@ class DatabaseSeeder extends Seeder
             )
             ->count(20)
             ->create();
+
+        Tag::factory()
+            ->sequence(
+                ['name' => 'Action'],
+                ['name' => 'Adventure'],
+                ['name' => 'Comedy'],
+                ['name' => 'Drama'],
+                ['name' => 'Fantasy'],
+                ['name' => 'Horror'],
+                ['name' => 'Mystery'],
+                ['name' => 'Romance'],
+                ['name' => 'Sci-Fi'],
+                ['name' => 'Thriller'],
+                ['name' => 'Superhero'],
+                ['name' => 'Dystopia'],
+                ['name' => 'Historical'],
+                ['name' => 'Crime'],
+                ['name' => 'Western'],
+            ) ->count(15) -> create();
 
         Comic::factory(20)->create();
 
