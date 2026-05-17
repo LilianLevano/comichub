@@ -12,13 +12,13 @@
                 @method('PATCH')
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-1.5">
-                        <label for="name" class="text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+
+                        <x-form-fields.text-input
+                            name="name"
+                            label="Name"
+                            value="{{old('name', $category->name)}}"
                         />
-                        @error('name')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
+
                     </div>
 
                     <div class="flex justify-between items-center mt-2">

@@ -14,32 +14,28 @@
                 @method('PATCH')
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-1.5">
-                        <label for="title" class="text-sm font-medium text-gray-700">Title of the comics</label>
-                        <input type="text" id="title" name="title" value="{{ old('title', $comic->title) }}"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-                               placeholder="e.g. Batman - Year One"
-                        />
-                        @error('title')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
 
-                        <label for="description" class="text-sm font-medium text-gray-700">Description of the comics</label>
-                        <input type="text" id="description" name="description" value="{{ old('description' , $comic->description) }}"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-                               placeholder="Ex.'Batman - Year one' is a comics that talks about..."
+                        <x-form-fields.text-input
+                            name="title"
+                            label="Title of the comics"
+                            placeholder="e.g. Batman - Year One"
+                            value="{{old('title', $comic->title)}}"
                         />
-                        @error('description')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
 
-                        <label for="author" class="text-sm font-medium text-gray-700">Who wrote that comics?</label>
-                        <input type="text" id="author" name="author" value="{{ old('author' , $comic->author) }}"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-                               placeholder="e.g. Frank Willer"
+                        <x-form-fields.text-input
+                            name="description"
+                            label="Description of the comics"
+                            placeholder="e.g.'Batman - Year one' is a comics that talks about..."
+                            value="{{old('description', $comic->description)}}"
                         />
-                        @error('author')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
+
+                        <x-form-fields.text-input
+                            name="author"
+                            label="Who wrote that comics?"
+                            placeholder="e.g. Frank Willer"
+                            value="{{old('author',$comic->author)}}"
+                        />
+
 
                         <label for="release_date" class="text-sm font-medium text-gray-700">When was that comics released?</label>
                         <input type="date" id="release_date" name="release_date" value="{{ old('release-date', $comic->release_date) }}"

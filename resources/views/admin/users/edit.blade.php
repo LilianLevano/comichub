@@ -14,24 +14,26 @@
                 <div class="flex flex-col gap-4">
 
                     {{-- Name --}}
-                    <div class="flex flex-col gap-1.5">
-                        <label for="name" class="text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"/>
-                        @error('name')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
-                    </div>
+
+                    <x-form-fields.text-input
+                        name="name"
+                        label="Name"
+                        placeholder="e.g. John Doe"
+                        value="{{old('name', $user->name)}}"
+                    />
+
+
 
                     {{-- Email --}}
-                    <div class="flex flex-col gap-1.5">
-                        <label for="email" class="text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"/>
-                        @error('email')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
-                    </div>
+
+                    <x-form-fields.text-input
+                        name="email"
+                        label="Email"
+                        placeholder="e.g. hello@example.com"
+                        value="{{old('email' , $user->email)}}"
+                    />
+
+
 
                     {{-- Password --}}
                     <div class="flex flex-col gap-1.5">
