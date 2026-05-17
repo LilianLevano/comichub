@@ -19,13 +19,7 @@
                                 user_id="{{$comic->user->id}}"
                                 created_at="{{ $comic->created_at->format('F j, Y') }}"
                             />
-                            @if($comic->tags->isNotEmpty())
-                                <div class="flex flex-wrap gap-2">
-                                    @foreach($comic->tags as $tag)
-                                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-md">{{ $tag->name }}</span>
-                                    @endforeach
-                                </div>
-                            @endif
+                            <x-comic-tags :tags="$comic->tags" />
                         </div>
                     </div>
             </div>

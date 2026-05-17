@@ -16,8 +16,10 @@
             @empty
                 <p class="text-sm text-gray-500 col-span-full">No comics with this tag yet.</p>
             @endforelse
-        </div>
 
+
+        </div>
+        <x-back-button/>
     </div>
 </x-site-layout>
 
