@@ -3,6 +3,7 @@
     'category_id',
     'category_name',
     'user_name',
+    'user_id',
     'release_date',
     'user_name',
     'created_at'
@@ -17,5 +18,5 @@
     <span>📅 {{ $release_date }}</span>
 </div>
 <div class="mt-3 pt-3 border-t border-black/10 text-xs text-gray-400 italic">
-    Article published by <span class="font-semibold text-gray-500">{{ $user_name }}</span> on {{ $created_at }}
+    Article published by <span class="font-semibold text-gray-500"> <a class="underline hover:text-blue-400" href="/users/{{$user_id}}">{{ $user_name }}</a> </span> on {{ $created_at }}
 </div>
