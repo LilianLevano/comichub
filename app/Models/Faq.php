@@ -10,6 +10,13 @@ class Faq extends Model
     /** @use HasFactory<\Database\Factories\FaqFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'question',
+        'category_id',
+        'user',
+        'user_id',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

@@ -39,7 +39,7 @@ Route::prefix('admin')->middleware( \App\Http\Middleware\IsAdmin::class)->name('
 
 // Public zone
 Route::resource('users', \App\Http\Controllers\UserController::class)->except(['edit', 'create', 'update']);
-Route::resource('faqs', FaqController::class)->except(['edit', 'create', 'update']);
+Route::resource('faqs', FaqController::class)->except(['edit','update']);
 
 
 

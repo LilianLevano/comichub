@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,8 @@ class FaqController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('faqs.create', compact('categories'));
     }
 
     /**
@@ -38,7 +40,18 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'question'    => ['required', 'string', 'max:255'],
+            'category_id' => ['required', 'exists:categories,id'],
+        ]);
+
+        Faq::create([
+            'question'    => $request->question,
+            'category_id' => $request->category_id,
+            'user_id'        => auth()->id(),
+        ]);
+
+        return redirect()->route('faqs.index');
     }
 
 

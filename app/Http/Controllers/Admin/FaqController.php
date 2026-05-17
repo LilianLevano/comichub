@@ -22,7 +22,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.faqs.create');
     }
 
     /**

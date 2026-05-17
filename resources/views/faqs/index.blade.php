@@ -2,8 +2,12 @@
     <div class="w-[90%] max-w-4xl mx-auto mt-8">
         {{ $faqs->links() }}
         <h1 class="text-2xl font-semibold text-gray-800 mb-6">FAQs</h1>
-
-        <div class="flex flex-col gap-4">
+        @auth
+            <a href="{{ route('faqs.create') }}" class="bg-gray-800 text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition">
+                Ask a question
+            </a>
+        @endauth
+        <div class="flex flex-col gap-4 mt-5">
             @forelse ($faqs as $faq)
                 <div onclick="window.location='{{ route('faqs.show', $faq->id) }}'"
                      class="cursor-pointer bg-white rounded-2xl shadow-sm border border-black/10 p-5 hover:shadow-md hover:border-black/20 transition">
