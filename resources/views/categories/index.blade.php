@@ -1,26 +1,17 @@
-<x-site-layout title="Categories" header="Categories">
-    <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
-        {{ $categories->links() }}
-        @foreach($categories as $category)
-            <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6  group">
-                <h2 class="text-xl font-bold mb-4 group-hover:text-blue-400 transition-all duration-300"><a href="/categories/{{$category->id}}">{{ $category->name }}</a> </h2>
-                <ul class="flex flex-wrap gap-10">
+<x-site-layout title="Categories">
+    <div class="w-[90%] max-w-4xl mx-auto mt-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6">Categories</h1>
 
-                    @foreach($category->comics as $comic)
-                        <li>
-                            <a href="/comics/{{ $comic->id }}" class="px-4 py-2 rounded-xl bg-blue-100 text-blue-600 hover:bg-blue-400 hover:text-white transition-all duration-300 truncate">
-                                {{ $comic->title }}
-                            </a>
-                        </li>
-                    @endforeach
-
-
-                </ul>
-            </div>
-        @endforeach
-        {{ $categories->links('pagination::simple-tailwind') }}
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            @forelse ($categories as $category)
+                <a href="/categories/{{ $category->id }}"
+                   class="bg-white rounded-2xl shadow-sm border border-black/10 p-5 flex flex-col gap-1 hover:shadow-md hover:border-black/20 transition">
+                    <span class="text-base font-semibold text-gray-800">{{ $category->name }}</span>
+                    <span class="text-sm text-gray-400">{{ $category->comics_count }} {{ Str::plural('comic', $category->comics_count) }}</span>
+                </a>
+            @empty
+                <p class="text-sm text-gray-500">No categories yet.</p>
+            @endforelse
+        </div>
     </div>
-
-
 </x-site-layout>
-
