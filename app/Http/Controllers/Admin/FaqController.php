@@ -71,14 +71,14 @@ class FaqController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
+       $validate = $request->validate([
             'question'    => ['required', 'string', 'max:255'],
             'answer'      => ['nullable', 'string'],
             'category_id' => ['required', 'exists:categories,id'],
         ]);
 
         $faq = Faq::findOrFail($id);
-        $faq->update($request->only('question', 'answer', 'category_id'));
+        $faq->update($validate);
 
         return redirect()->route('admin.faqs.index');
     }
