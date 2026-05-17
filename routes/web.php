@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,7 @@ Route::resource('categories', CategoryController::class)->except(['edit', 'creat
 Route::resource('comics', ComicController::class)->except(['edit', 'create', 'update']);
 Route::resource('users', \App\Http\Controllers\UserController::class)->except(['edit', 'create', 'update']);
 Route::resource('faqs', FaqController::class)->except(['edit','update']);
+Route::resource('tags', tagController::class)->except(['edit', 'create', 'update']);
 
 
 
