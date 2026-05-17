@@ -18,4 +18,8 @@ class Category extends Model
     public function comics(){
         return $this->hasMany(Comic::class , 'category_id', 'id');
     }
+
+    public function faqs(){
+        return $this->hasMany(Faq::class, 'category_id', 'id');
+    }
 }
