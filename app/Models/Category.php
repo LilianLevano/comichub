@@ -13,7 +13,6 @@ class Category extends Model
         'name',
     ];
 
-    protected $guarded = [];
 
     public function comics(){
         return $this->hasMany(Comic::class , 'category_id', 'id');
