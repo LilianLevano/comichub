@@ -33,6 +33,7 @@ Route::prefix('admin')->middleware( \App\Http\Middleware\IsAdmin::class)->name('
     Route::resource('comics', \App\Http\Controllers\Admin\ComicController::class)->except(['show']);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
     Route::resource('faqs', \App\Http\Controllers\Admin\FaqController::class)->except(['show']);
+    Route::resource('tags', \App\Http\Controllers\Admin\TagController::class)->except(['show']);
 });
 
 
