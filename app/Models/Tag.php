@@ -10,6 +10,7 @@ class Tag extends Model
 
     use HasFactory;
 
+    protected $fillable = ['name'];
     public function comics()
     {
         return $this->belongsToMany(Comic::class, 'comic_tag', 'tag_id', 'comic_id');
