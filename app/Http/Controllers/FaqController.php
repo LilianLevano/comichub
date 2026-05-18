@@ -15,7 +15,11 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faqs = Faq::with(['category', 'user'])->get()->groupBy('category.name');
+        $faqs = Faq::with(['category', 'user'])
+            ->orderBy('question')
+            ->get()
+            ->groupBy('category.name')
+
         return view('faqs.index', compact('faqs'));
     }
 
