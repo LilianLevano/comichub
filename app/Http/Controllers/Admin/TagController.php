@@ -31,7 +31,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name' => 'required', 'string', 'max:255', 'unique:tags,name'
+            'name' => ['required', 'string', 'max:30', 'unique:tags,name']
         ]);
 
         $tag = Tag::create($validate);

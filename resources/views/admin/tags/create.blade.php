@@ -12,7 +12,7 @@
 
                 <x-form-fields.text-input
                     name="name"
-                    label="Name of the tag"
+                    label="Name of the tag (Max. 30 characters)"
                     placeholder="e.g. Comedy"
                     value="{{old('name')}}"
                 />
