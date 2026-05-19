@@ -12,7 +12,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomElement(['Books', 'Sport', 'Kitchen', 'Politics', 'Video-Games']),
+          
         ];
     }
 }

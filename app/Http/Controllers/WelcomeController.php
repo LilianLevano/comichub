@@ -17,6 +17,6 @@ class WelcomeController extends Controller
             ->orderBy('comics_count', 'desc')
             ->take(5)
             ->get();
-        return view('welcome', compact('comic'), compact('topCategories', 'teller'));
+        return view('welcome', compact('topCategories', 'teller', 'comic'));
     }
 }

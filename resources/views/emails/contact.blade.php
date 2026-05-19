@@ -1,2 +1,2 @@
-<p><b>From:</b> {{auth()->user()->name}}</p>
+<p><b>From:</b> @if(auth()->user()) {{auth()->user()->name}} @else Anonymous @endif </p>
 <p>{{$question}}</p>

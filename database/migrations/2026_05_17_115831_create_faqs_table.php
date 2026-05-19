@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('question');
             $table->text('answer')->nullable();
-            $table->foreignId('category_id');
-            $table->foreignId('user_id');
+            $table->foreignId('category_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
     });
     }

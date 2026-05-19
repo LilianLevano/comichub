@@ -35,7 +35,7 @@
 
 
                         <label for="release_date" class="text-sm font-medium text-gray-700">When was that comics released?</label>
-                        <input type="date" id="release_date" name="release_date" value="{{ old('author') }}"
+                        <input type="date" id="release_date" name="release_date" value="{{ old('release_date') }}"
                                class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
 
                         />

@@ -44,7 +44,7 @@ Route::resource('categories', CategoryController::class)->except(['edit', 'creat
 Route::resource('comics', ComicController::class)->except(['edit', 'create', 'update']);
 Route::resource('users', \App\Http\Controllers\UserController::class)->except(['edit', 'create', 'update']);
 Route::resource('faqs', FaqController::class)->except(['edit','update']);
-Route::resource('tags', tagController::class)->except(['edit', 'create', 'update']);
+Route::resource('tags', TagController::class)->except(['edit', 'create', 'update']);
 Route::resource('contact', ContactController::class)->except(['edit', 'update']);
 
 require __DIR__.'/auth.php';
