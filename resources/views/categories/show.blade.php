@@ -17,6 +17,6 @@
                 <p class="text-sm text-gray-500 col-span-full">No comics in this category yet.</p>
             @endforelse
         </div>
-
+        <x-back-button/>
     </div>
 </x-site-layout>
