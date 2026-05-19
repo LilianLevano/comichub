@@ -51,7 +51,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
-        $category->comics()->delete();
+
         $category->delete();
         return redirect()->route('admin.categories.index');
     }

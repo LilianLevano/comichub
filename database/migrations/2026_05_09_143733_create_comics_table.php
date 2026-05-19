@@ -19,7 +19,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->date('release_date');
             $table->string('image_path')->nullable();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('category_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->timestamps();
         });
     }

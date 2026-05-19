@@ -9,11 +9,11 @@
 
                     <x-comic-extra-information
                         author="{{ $comic->author }}"
-                        category_id="{{$comic->category->id}}"
-                        category_name="{{ $comic->category->name }}"
+                        :category_id="$comic->category?->id"
+                        :category_name="$comic->category?->name"
                         release_date="{{ $comic->release_date }}"
                         user_name="{{ $comic->user->name }}"
-                        user_id="{{$comic->user->id}}"
+                        user_id="{{ $comic->user->id }}"
                         created_at="{{ $comic->created_at->format('F j, Y') }}"
                     />
 
