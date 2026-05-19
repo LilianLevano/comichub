@@ -5,6 +5,7 @@
         ['name'=>'Categories', 'url'=>'/categories'],
         ['name'=>'Tags', 'url'=>'/tags'],
         ['name'=>'Faqs', 'url'=>'/faqs'],
+        ['name'=>'Contact', 'url'=>'/contact'],
         ['name'=>'Users', 'url'=>'/users'],
 
     ]
