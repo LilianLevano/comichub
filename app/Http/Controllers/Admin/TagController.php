@@ -35,7 +35,7 @@ class TagController extends Controller
         ]);
 
         $tag = Tag::create($validate);
-        return redirect()->route('tags.index');
+        return redirect()->route('admin.tags.index');
     }
 
     /**
@@ -67,7 +67,7 @@ class TagController extends Controller
         $tag = Tag::findOrFail($id);
 
         $tag->update($validate);
-        return redirect()->route('tags.index');
+        return redirect()->route('admin.tags.index');
     }
 
     /**
@@ -77,6 +77,6 @@ class TagController extends Controller
     {
         $tag = Tag::findOrFail($id);
         $tag->delete();
-        return redirect()->route('tags.index');
+        return redirect()->route('admin.tags.index');
     }
 }
