@@ -1,4 +1,10 @@
 <x-site-layout title="Contact">
+    @if(session('success'))
+        <div class="bg-green-100 text-green-800 text-sm px-4 py-3 rounded-lg mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="w-[90%] max-w-lg mx-auto mt-8">
         <div class="bg-white rounded-2xl shadow-sm border border-black/10 p-6">
             <h1 class="text-xl font-semibold text-gray-800 mb-6">Contact the admin!</h1>

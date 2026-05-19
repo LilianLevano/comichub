@@ -17,7 +17,7 @@ class ContactAsked extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public $question)
     {
         //
     }
@@ -28,7 +28,7 @@ class ContactAsked extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Asked',
+            subject: 'New message from Contact Page',
         );
     }
 
@@ -38,7 +38,10 @@ class ContactAsked extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.contact',
+            with: [
+                'question' => $this->question,
+            ],
         );
     }
 
