@@ -125,6 +125,15 @@ class ComicController extends Controller
     public function destroy($id)
     {
         $comic = Comic::findOrFail($id);
+
+        if ($comic->image_path) {
+            Storage::disk('public')->delete($comic->image_path);
+        }
+
+        $comic->tags()->detach();
+
+        $comic->comments()->delete();
+
         $comic->delete();
         return redirect()->route('admin.comics.index');
     }
