@@ -49,11 +49,23 @@ class ComicController extends Controller
         ]);
 
         $validated['user_id'] = auth()->id();
-        $path = $request->file('image')->store('covers', 'public');
 
-        $validated['image_path'] = $path;
+
+
+        if($request->hasFile('image')){
+            $path = $request->file('image')->store('covers', 'public');
+            $validated['image_path'] = $path;
+        }else{
+            $validated['image_path'] = null;
+        }
+
+        $tags = $validated['tags']  ?? [];
+        unset($validated['tags']);
+
+
+
         $comic = Comic::create($validated);
-        $comic->tags()->sync($request->tags ?? []);
+        $comic->tags()->sync($tags);
         return redirect()->route('admin.comics.index');
 
     }
@@ -97,8 +109,13 @@ class ComicController extends Controller
             $validated['image_path'] = $request->file('image')->store('covers', 'public');
         }
 
+
+        $tags = $validated['tags']  ?? [];
+        unset($validated['tags']);
+
+
         $comic->update($validated);
-        $comic->tags()->sync($request->tags ?? []);
+        $comic->tags()->sync($tags);
         return redirect()->route('admin.comics.index');
     }
 
