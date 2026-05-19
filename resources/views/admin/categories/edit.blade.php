@@ -25,7 +25,7 @@
 
                         <div class="flex items-center gap-4">
                             <x-cancel-button/>
-                            <x-save-create-button content="Edit"/>
+                            <x-save-create-button content="Update"/>
                         </div>
                     </div>
                 </div>
