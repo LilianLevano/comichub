@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\form-fields;
+namespace App\View\Components\FormFields;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DateInput extends Component
+class TextInput extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class DateInput extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form-fields.date-input');
+        return view('components.form-fields.text-input');
     }
 }
