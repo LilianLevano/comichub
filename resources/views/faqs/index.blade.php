@@ -5,7 +5,7 @@
             <h1 class="text-2xl font-semibold text-gray-800">FAQs</h1>
 
             <x-create-button-user content="Ask a question" link="/faqs/create"/>
-            
+
         </div>
 
         <x-flash-message/>
