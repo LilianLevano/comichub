@@ -59,14 +59,7 @@
                         :current-image="null"
                     />
 
-                    <div class="flex flex-col gap-1.5">
-                        <label for="image" class="text-sm font-medium text-gray-700">Profile picture</label>
-                        <input type="file" id="image" name="image" accept="image/*"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"/>
-                        @error('image')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
-                    </div>
+
 
                     {{-- Is Admin --}}
                     <div class="flex items-center gap-3">
