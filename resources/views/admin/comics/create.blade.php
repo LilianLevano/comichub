@@ -40,34 +40,26 @@
                             value="{{old('release_date')}}"
                         />
 
-
                         <x-form-fields.category-select-input
                             name="category_id"
                             label="What is the category of that comics?"
                             :options="$categories"
-                            selected=""
+                            selected="null"
+                        />
+
+                        <x-form-fields.image-input
+                            name="image"
+                            label="Cover image (Recommended size: 288x445px)"
+                            current-image="null"
                         />
 
 
-                        <label for="image" class="text-sm font-medium text-gray-700">Cover image (Recommended size: 288x445px)</label>
-                        <input type="file" id="image" name="image" accept="image/*"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
-                        />
-                        @error('image')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
 
-                        <label for="tags" class="text-sm font-medium text-gray-700">Tags</label>
-                        <select name="tags[]" id="tags" multiple>
-                            @foreach($tags as $tag)
-                                <option value="{{ $tag->id }}" @selected(in_array($tag->id, old('tags', [])))>
-                                    {{ $tag->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('tags')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
+                        <x-form-fields.tags-select-input
+                            name="tags"
+                            label="Tags"
+                            :options="$tags"
+                        />
 
 
                         <script>
