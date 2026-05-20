@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/comics/{comic}/comments', [CommentController::class, 'store']);
+    Route::get('/comics/create', [ComicController::class, 'create'])->name('comics.create');
+    Route::post('/comics', [ComicController::class, 'store'])->name('comics.store');
 });
 
 
@@ -41,7 +43,7 @@ Route::prefix('admin')->middleware( \App\Http\Middleware\IsAdmin::class)->name('
 // Public zone
 Route::get('/',[WelcomeController::class, 'index']) -> name('welcome');
 Route::resource('categories', CategoryController::class)->except(['edit', 'create', 'update']);
-Route::resource('comics', ComicController::class)->except(['edit', 'update']);
+Route::resource('comics', ComicController::class)->except(['edit', 'create' , 'update']);
 Route::resource('users', \App\Http\Controllers\UserController::class)->except(['edit', 'create', 'update']);
 Route::resource('faqs', FaqController::class)->except(['edit','update']);
 Route::resource('tags', TagController::class)->except(['edit', 'create', 'update']);
