@@ -50,7 +50,7 @@
                         <x-form-fields.image-input
                             name="image"
                             label="Cover image (Recommended size: 288x445px)"
-                            current-image="null"
+                            :current-image="null"
                         />
 
 
