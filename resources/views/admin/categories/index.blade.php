@@ -7,6 +7,7 @@
 
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
         {{ $categories->links() }}
+        <x-flash-message/>
       <x-make-button content="categories"/>
 
         @foreach($categories as $category)
