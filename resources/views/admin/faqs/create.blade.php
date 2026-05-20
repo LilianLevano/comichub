@@ -13,7 +13,6 @@
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-1.5">
 
-
                         <x-form-fields.text-area-input
                             name="question"
                             label="Question"
@@ -35,10 +34,6 @@
                             :options="$categories"
                             selected="null"
                         />
-
-
-
-
 
                     </div>
 

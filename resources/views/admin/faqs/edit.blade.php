@@ -14,14 +14,12 @@
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-1.5">
 
-
                         <x-form-fields.text-area-input
                             name="question"
                             label="Question"
                             placeholder="e.g. Where can I find Batman - Year One?"
                             :value="old('question', $faq->question)"
                         />
-
 
                         <x-form-fields.text-area-input
                             name="answer"
@@ -31,16 +29,12 @@
                             rows="5"
                         />
 
-
                         <x-form-fields.category-select-input
                             name="category_id"
                             label="What is the category of that comics?"
                             :options="$categories"
                             selected="null"
                         />
-
-
-
                     </div>
 
                     <div class="flex justify-between items-center mt-2">
