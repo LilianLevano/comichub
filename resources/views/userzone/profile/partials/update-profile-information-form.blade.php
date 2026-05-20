@@ -24,9 +24,13 @@
         </div>
 
         <div>
-            <x-breeze.input-label for="bio" :value="__('Bio')" />
-            <x-breeze.text-input id="bio" name="bio" type="text" class="mt-1 block w-full" :value="old('bio', $user->bio)" required autofocus autocomplete="bio" />
-            <x-breeze.input-error class="mt-2" :messages="$errors->get('bio')" />
+            <x-form-fields.text-area-input
+                name="bio"
+                label="Bio"
+                placeholder="I'm a student in..."
+                value="{{ old('bio', $user->bio) }}"
+                rows="4"
+            />
         </div>
 
         <div>

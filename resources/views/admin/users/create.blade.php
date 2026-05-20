@@ -55,15 +55,14 @@
 
 
                     {{-- Bio --}}
-                    <div class="flex flex-col gap-1.5">
-                        <label for="bio" class="text-sm font-medium text-gray-700">Bio</label>
-                        <textarea id="bio" name="bio" rows="4"
-                                  class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
-                                  placeholder="Tell us something about this user...">{{ old('bio') }}</textarea>
-                        @error('bio')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
-                    </div>
+
+                    <x-form-fields.text-area-input
+                        name="bio"
+                        label="Bio"
+                        placeholder="I'm a student in..."
+                        value="{{ old('bio') }}"
+                        rows="4"
+                    />
 
                     {{-- Image --}}
                     <div class="flex flex-col gap-1.5">
