@@ -12,17 +12,12 @@
                 @csrf
                 <div class="flex flex-col gap-4">
 
-                    {{-- Name --}}
-
                     <x-form-fields.text-input
                         name="name"
                         label="Name"
                         placeholder="e.g. John Doe"
                         value="{{old('name')}}"
                     />
-
-
-                    {{-- Email --}}
 
                     <x-form-fields.text-input
                         name="email"
@@ -31,8 +26,6 @@
                         value="{{old('email')}}"
                     />
 
-
-                    {{-- Password --}}
                     <div class="flex flex-col gap-1.5">
                         <label for="password" class="text-sm font-medium text-gray-700">Password</label>
                         <input type="password" id="password" name="password"
@@ -43,18 +36,12 @@
                         @enderror
                     </div>
 
-                    {{-- Birthday --}}
-
                     <x-form-fields.date-input
                         name="birthday"
                         label="Birthday"
                         placeholder=""
                         value="{{old('birthday')}}"
                     />
-
-
-
-                    {{-- Bio --}}
 
                     <x-form-fields.text-area-input
                         name="bio"
@@ -64,7 +51,14 @@
                         rows="4"
                     />
 
-                    {{-- Image --}}
+
+                    <x-form-fields.image-input
+                        name="image"
+                        label="Profile Picture"
+                        accept="image/*"
+                        :current-image="null"
+                    />
+
                     <div class="flex flex-col gap-1.5">
                         <label for="image" class="text-sm font-medium text-gray-700">Profile picture</label>
                         <input type="file" id="image" name="image" accept="image/*"

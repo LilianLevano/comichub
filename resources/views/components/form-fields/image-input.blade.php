@@ -10,7 +10,7 @@
         {{ $label }}
     </label>
 
-    @if($currentImage !=null)
+    @if($currentImage != null)
         <img src="{{ Storage::url($currentImage) }}" alt="Current cover"
              class="w-32 h-44 object-cover rounded-lg border border-black/10" />
     @endif
