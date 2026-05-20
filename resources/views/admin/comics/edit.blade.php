@@ -37,14 +37,12 @@
                         />
 
 
-                        <label for="release_date" class="text-sm font-medium text-gray-700">When was that comics released?</label>
-                        <input type="date" id="release_date" name="release_date" value="{{ old('release-date', $comic->release_date) }}"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-
+                        <x-form-fields.date-input
+                            name="release_date"
+                            label="When was that comics released?"
+                            placeholder=""
+                            value="{{old('release_date', $comic->release_date)}}"
                         />
-                        @error('release_date')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
 
                         <label for="category_id" class="text-sm font-medium text-gray-700">What is the category of that comics?</label>
                         <select name="category_id" id="category_id" class="">
