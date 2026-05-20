@@ -22,3 +22,10 @@
     <span class="text-red-500 text-xs">{{ $message }}</span>
     @enderror
 </div>
+
+<script>
+    new TomSelect('#category_id', {
+        placeholder: 'Search for a category...',
+        maxOptions: 50,
+    });
+</script>

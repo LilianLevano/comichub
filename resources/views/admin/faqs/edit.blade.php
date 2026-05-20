@@ -14,41 +14,32 @@
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-1.5">
 
-                        <label for="question" class="text-sm font-medium text-gray-700">Question</label>
-                        <textarea id="question" name="question" rows="3"
-                                  class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
-                                  placeholder="e.g. Where can I find Batman - Year One?">{{ old('question', $faq->question) }}</textarea>
-                        @error('question')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
 
-                        <label for="answer" class="text-sm font-medium text-gray-700">Answer</label>
-                        <textarea id="answer" name="answer" rows="5"
-                                  class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
-                                  placeholder="Write the answer here...">{{ old('answer', $faq->answer) }}</textarea>
-                        @error('answer')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
+                        <x-form-fields.text-area-input
+                            name="question"
+                            label="Question"
+                            placeholder="e.g. Where can I find Batman - Year One?"
+                            :value="old('question', $faq->question)"
+                        />
 
-                        <label for="category_id" class="text-sm font-medium text-gray-700">Category</label>
-                        <select name="category_id" id="category_id">
-                            <option value="">-- Choose a category --</option>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}" @selected(old('category_id', $faq->category_id) == $category->id)>
-                                    {{ $category->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('category_id')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
 
-                        <script>
-                            new TomSelect('#category_id', {
-                                placeholder: 'Search for a category...',
-                                maxOptions: 50,
-                            });
-                        </script>
+                        <x-form-fields.text-area-input
+                            name="answer"
+                            label="Answer"
+                            placeholder="Write the answer here..."
+                            :value="old('answer', $faq->answer)"
+                            rows="5"
+                        />
+
+
+                        <x-form-fields.category-select-input
+                            name="category_id"
+                            label="What is the category of that comics?"
+                            :options="$categories"
+                            selected="null"
+                        />
+
+
 
                     </div>
 

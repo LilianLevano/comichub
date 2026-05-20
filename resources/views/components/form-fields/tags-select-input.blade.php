@@ -22,3 +22,10 @@
     <span class="text-red-500 text-xs">{{ $message }}</span>
     @enderror
 </div>
+
+<script>
+    new TomSelect('#tags', {
+        plugins: ['remove_button'],
+        placeholder: 'Select tags...',
+    });
+</script>
