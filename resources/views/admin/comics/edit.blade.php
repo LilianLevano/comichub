@@ -64,6 +64,7 @@
                             name="tags"
                             label="Tags"
                             :options="$tags"
+                            :selected="$comic->tags->pluck('id')->toArray()"
                         />
 
                         <script>
