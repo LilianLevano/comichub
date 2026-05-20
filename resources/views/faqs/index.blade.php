@@ -3,12 +3,12 @@
 
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-2xl font-semibold text-gray-800">FAQs</h1>
-            @auth
-                <a href="{{ route('faqs.create') }}" class="bg-gray-800 text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition">
-                    Ask a question
-                </a>
-            @endauth
+
+            <x-create-button-user content="Ask a question" link="/faqs/create"/>
+            
         </div>
+
+        <x-flash-message/>
 
         @foreach ($faqs as $categoryName => $items)
             <div class="mb-8">

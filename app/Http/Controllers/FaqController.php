@@ -60,7 +60,7 @@ class FaqController extends Controller
 
         Mail::to(config('mail.admin_address'))->send(new FaqAsked($faq));
 
-        return redirect()->route('faqs.index');
+        return redirect()->route('faqs.index')->with('success','Question asked successfully!');
     }
 
 
