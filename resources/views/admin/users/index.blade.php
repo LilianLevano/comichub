@@ -17,7 +17,7 @@
         </div>
 
         {{ $users->links() }}
-
+        <x-flash-message/>
         <div class="flex flex-col gap-3">
             @foreach($users as $user)
                 <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex gap-4 items-center">

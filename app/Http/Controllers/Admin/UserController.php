@@ -50,7 +50,7 @@ class UserController extends Controller
 
         User::create($validated);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success','User created successfully!');
     }
 
     /**
@@ -99,7 +99,7 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success','User updated successfully!');
     }
 
     /**
@@ -109,6 +109,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success','User destroyed successfully!');
     }
 }
