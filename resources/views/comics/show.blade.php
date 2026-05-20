@@ -23,6 +23,9 @@
         {{-- Commentaires --}}
         <div class="w-full flex flex-col gap-4">
 
+
+            <x-show-likes-comic :comic="$comic" />
+
             @auth
                 <form method="POST" action="/comics/{{ $comic->id }}/comments" class="flex flex-col gap-2">
                     @csrf

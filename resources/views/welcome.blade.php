@@ -20,6 +20,7 @@
                                 created_at="{{ $comic->created_at->format('F j, Y') }}"
                             />
                             <x-comic-tags :tags="$comic->tags" />
+                            <x-show-likes-comic :comic="$comic" />
                         </div>
                     </div>
             </div>

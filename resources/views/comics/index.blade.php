@@ -20,6 +20,7 @@
                     />
 
                     <x-comic-tags :tags="$comic->tags" />
+                    <x-show-likes-comic :comic="$comic" />
                 </div>
             </div>
         @endforeach

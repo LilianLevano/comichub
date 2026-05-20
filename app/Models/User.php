@@ -61,4 +61,9 @@ class User extends Authenticatable
     public function faqs(){
         return $this->hasMany(Faq::class, 'user_id', 'id');
     }
+
+    public function likedComics()
+    {
+        return $this->belongsToMany(Comic::class, 'comic_user_likes');
+    }
 }

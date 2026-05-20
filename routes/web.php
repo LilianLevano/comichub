@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComicController;
+use App\Http\Controllers\ComicLikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FaqController;
@@ -23,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/comics/{comic}/comments', [CommentController::class, 'store']);
     Route::get('/comics/create', [ComicController::class, 'create'])->name('comics.create');
     Route::post('/comics', [ComicController::class, 'store'])->name('comics.store');
+    Route::post('/comics/{comic}/like', [ComicLikeController::class, 'store'])->name('comics.like');
+    Route::delete('/comics/{comic}/like', [ComicLikeController::class, 'destroy'])->name('comics.unlike');
 });
 
 

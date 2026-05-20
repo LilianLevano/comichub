@@ -28,4 +28,14 @@ class Comic extends Model
         return $this->belongsToMany(Tag::class, 'comic_tag', 'comic_id', 'tag_id');
     }
 
+    public function likedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'comic_user_likes');
+    }
+
+    public function isLikedBy(User $user): bool
+    {
+        return $this->likedByUsers()->where('user_id', $user->id)->exists();
+    }
+
 }
