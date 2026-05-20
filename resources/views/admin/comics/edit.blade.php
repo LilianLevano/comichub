@@ -44,15 +44,14 @@
                             value="{{old('release_date', $comic->release_date)}}"
                         />
 
-                        <label for="category_id" class="text-sm font-medium text-gray-700">What is the category of that comics?</label>
-                        <select name="category_id" id="category_id" class="">
 
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}" @selected(old('category_id', $comic->category_id) == $category->id)>
-                                    {{ $category->name }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <x-form-fields.category-select-input
+                            name="category_id"
+                            label="What is the category of that comics?"
+                            :options="$categories"
+                            :selected="$comic->category_id"
+                        />
+
 
                         @error('category_id')
                         <span class="text-red-500 text-xs">{{ $message }}</span>

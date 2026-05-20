@@ -40,16 +40,14 @@
                             value="{{old('release_date')}}"
                         />
 
-                        <label for="category_id" class="text-sm font-medium text-gray-700">What is the category of that comics?</label>
-                        <select name="category_id" id="category_id" class="">
-                            <option value="">-- Choisir une catégorie --</option>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('category_id')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
+
+                        <x-form-fields.category-select-input
+                            name="category_id"
+                            label="What is the category of that comics?"
+                            :options="$categories"
+                            selected=""
+                        />
+
 
                         <label for="image" class="text-sm font-medium text-gray-700">Cover image (Recommended size: 288x445px)</label>
                         <input type="file" id="image" name="image" accept="image/*"
