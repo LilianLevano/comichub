@@ -45,7 +45,7 @@ class FaqController extends Controller
             'user_id'     => auth()->id(),
         ]);
 
-        return redirect()->route('admin.faqs.index');
+        return redirect()->route('admin.faqs.index')->with('success','FAQ created successfully!');
     }
 
     /**
@@ -80,7 +80,7 @@ class FaqController extends Controller
         $faq = Faq::findOrFail($id);
         $faq->update($validate);
 
-        return redirect()->route('admin.faqs.index');
+        return redirect()->route('admin.faqs.index')->with('success','FAQ updated successfully!');
     }
 
     /**
@@ -90,6 +90,6 @@ class FaqController extends Controller
     {
         $faq = Faq::findOrFail($id);
         $faq->delete();
-        return redirect()->route('admin.faqs.index');
+        return redirect()->route('admin.faqs.index')->with('success','FAQ destroyed successfully!');
     }
 }

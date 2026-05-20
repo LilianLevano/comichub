@@ -8,7 +8,7 @@
 
     <div class="w-[90%] max-w-4xl mx-auto mt-8">
         {{ $faqs->links() }}
-
+        <x-flash-message/>
         <h1 class="text-2xl font-semibold text-gray-800 mb-6">FAQs</h1>
         <x-make-button content="faqs"/>
         <div class="flex flex-col gap-4 mt-4">
