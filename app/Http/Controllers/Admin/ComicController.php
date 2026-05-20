@@ -66,7 +66,7 @@ class ComicController extends Controller
 
         $comic = Comic::create($validated);
         $comic->tags()->sync($tags);
-        return redirect()->route('admin.comics.index');
+        return redirect()->route('admin.comics.index')->with('success','Comic created successfully!');
 
     }
 
@@ -116,7 +116,7 @@ class ComicController extends Controller
 
         $comic->update($validated);
         $comic->tags()->sync($tags);
-        return redirect()->route('admin.comics.index');
+        return redirect()->route('admin.comics.index')->with('success','Comic updated successfully!');
     }
 
     /**
@@ -135,6 +135,6 @@ class ComicController extends Controller
         $comic->comments()->delete();
 
         $comic->delete();
-        return redirect()->route('admin.comics.index');
+        return redirect()->route('admin.comics.index')->with('success','Comic destroyed successfully!');
     }
 }

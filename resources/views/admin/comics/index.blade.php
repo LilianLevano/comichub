@@ -10,6 +10,7 @@
 
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
         {{ $comics->links() }}
+        <x-flash-message/>
         <x-make-button content="comics"/>
         @foreach($comics as $comic)
 
