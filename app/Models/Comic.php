@@ -9,7 +9,7 @@ class Comic extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'author', 'user_id', 'release_date', 'image_path', 'category_id'];
+    protected $fillable = ['title', 'description', 'author', 'user_id', 'release_date', 'image_path', 'category_id', 'body'];
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id', 'id');

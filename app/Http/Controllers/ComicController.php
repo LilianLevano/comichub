@@ -34,6 +34,9 @@ class ComicController extends Controller
     }
 
     public function store(Request $request){
+
+        // ------- Zelfde principe als store comics voor admin maar voor ingelogde Users --------
+
         $validated = $request->validate([
             'title'       => ['required', 'string', 'max:50'],
             'description' => ['required', 'string', 'max:255'],
