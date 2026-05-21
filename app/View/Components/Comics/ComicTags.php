@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Comics;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ComicExtraInformation extends Component
+class ComicTags extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class ComicExtraInformation extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.comic-extra-information');
+        return view('components.comics.comic-tags');
     }
 }

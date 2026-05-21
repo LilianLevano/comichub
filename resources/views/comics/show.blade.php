@@ -2,11 +2,11 @@
     <div class="flex flex-col items-center gap-6 w-[90%] max-w-3xl mx-auto mt-10">
 
         <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6 flex gap-6 w-full">
-            <x-comic-image :path="$comic->image_path" :title="$comic->title"/>
+            <x-comics.comic-image :path="$comic->image_path" :title="$comic->title"/>
             <div class="flex flex-col gap-2 flex-1">
                 <h2 class="text-xl font-bold">{{ $comic->title }}</h2>
                 <p class="text-gray-500 text-sm">{{ $comic->description }}</p>
-                <x-comic-extra-information
+                <x-comics.comic-extra-information
                     author="{{ $comic->author }}"
                     :category_id="$comic->category?->id"
                     :category_name="$comic->category?->name"
@@ -16,7 +16,7 @@
                     created_at="{{ $comic->created_at->format('F j, Y') }}"
                 />
 
-                <x-comic-tags :tags="$comic->tags" />
+                <x-comics.comic-tags :tags="$comic->tags" />
             </div>
         </div>
 
@@ -24,7 +24,7 @@
         <div class="w-full flex flex-col gap-4">
 
 
-            <x-show-likes-comic :comic="$comic" />
+            <x-comics.show-likes-comic :comic="$comic" />
 
             @auth
                 <form method="POST" action="/comics/{{ $comic->id }}/comments" class="flex flex-col gap-2">

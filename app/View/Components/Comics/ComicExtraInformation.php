@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Comics;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ShowLikesComic extends Component
+class ComicExtraInformation extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class ShowLikesComic extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.show-likes-comic');
+        return view('components.comics.comic-extra-information');
     }
 }
