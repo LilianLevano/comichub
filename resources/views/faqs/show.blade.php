@@ -1,4 +1,4 @@
-<x-site-layout>
+<x-site-layout title="{{$faq->question}}">
     <div class="w-[90%] max-w-3xl mx-auto mt-8 flex flex-col gap-6">
 
         {{-- Question card --}}

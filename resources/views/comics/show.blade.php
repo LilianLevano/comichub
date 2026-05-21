@@ -1,4 +1,4 @@
-<x-site-layout title="Category - {{$comic->title}}">
+<x-site-layout title="{{$comic->title}}">
     <div class="flex flex-col items-center gap-6 w-[90%] max-w-3xl mx-auto mt-10">
 
         <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6 flex gap-6 w-full">
