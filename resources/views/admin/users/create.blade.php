@@ -54,17 +54,12 @@
                         accept="image/*"
                         :current-image="null"
                     />
-                    
 
-                    {{-- Is Admin --}}
-                    <div class="flex items-center gap-3">
-                        <input type="checkbox" id="is_admin" name="is_admin" value="1" {{ old('is_admin') ? 'checked' : '' }}
-                        class="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-blue-400"/>
-                        <label for="is_admin" class="text-sm font-medium text-gray-700">Admin</label>
-                        @error('is_admin')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    <x-form-fields.admin-checkbox
+                        name="is_admin"
+                        label="Admin"
+                        value="{{ old('is_admin') ? 'checked' : '' }}"
+                    />
 
                     <div class="flex justify-between items-center mt-2">
                         <x-cancel-button/>
