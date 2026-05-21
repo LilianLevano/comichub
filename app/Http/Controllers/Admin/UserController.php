@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -42,23 +43,15 @@ class UserController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image_path'] = $request->file('image')->store('avatars', 'public');
+            $validated['image_path'] = $request->file('image')->store('avatars', 'public');     // image wordt opgeslagen in DB
         }
 
-        $validated['password'] = bcrypt($validated['password']);
-        $validated['is_admin'] = $request->boolean('is_admin');
+        $validated['password'] = bcrypt($validated['password']);            // encodeer de passwoord in de DB
+        $validated['is_admin'] = $request->boolean('is_admin');         // request->boolean gebruiken omdat wanneer de checkbox uit is, wordt er niets gestuurd, dit zorgt ervoor dat we 1 of 0 krijgen in de DB
 
         User::create($validated);
 
         return redirect()->route('admin.users.index')->with('success','User created successfully!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -85,17 +78,22 @@ class UserController extends Controller
             'is_admin' => ['nullable', 'boolean'],
         ]);
 
+
+
         if ($request->hasFile('image')) {
-            $validated['image_path'] = $request->file('image')->store('avatars', 'public');
+            if($user->image_path){
+                Storage::disk('public')->delete($user->image_path);         // als de user al een avatar had, wordt die verwijderd
+            }
+            $validated['image_path'] = $request->file('image')->store('avatars', 'public'); // nieuwe avatar wordt gesaved in de DB, en de path hiervan gelinkt aan de user in de DB
         }
 
         if ($validated['password']) {
-            $validated['password'] = bcrypt($validated['password']);
+            $validated['password'] = bcrypt($validated['password']);    // als een nieuwe passwoord werd gestuurd vervangen we die we de nieuwe geencodeerde passwoord
         } else {
-            unset($validated['password']);
+            unset($validated['password']); // als de field leeg is zetten we de attribuut passwoord uit de request om de oude passwoord niet te veranderen
         }
 
-        $validated['is_admin'] = $request->boolean('is_admin');
+        $validated['is_admin'] = $request->boolean('is_admin');         // zelfde principe als store
 
         $user->update($validated);
 
