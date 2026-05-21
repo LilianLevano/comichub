@@ -9,7 +9,7 @@
         <div class="flex w-[100%] gap-10 flex-wrap ">
             @forelse ($tag->comics as $comic)
                 <a href="{{ route('comics.show', $comic->id) }}" class="flex flex-col gap-2 group w-[288px]">
-                    <x-comic-image path="{{ $comic->image_path }}" title="{{ $comic->title }}" />
+                    <x-comics.comic-image path="{{ $comic->image_path }}" title="{{ $comic->title }}" />
                     <span class="text-sm font-medium text-gray-800 group-hover:text-blue-500 transition">{{ $comic->title }}</span>
                     <span class="text-xs text-gray-400">{{ $comic->category->name }}</span>
                 </a>
