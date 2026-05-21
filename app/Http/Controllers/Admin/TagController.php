@@ -34,16 +34,8 @@ class TagController extends Controller
             'name' => ['required', 'string', 'max:30', 'unique:tags,name']
         ]);
 
-        $tag = Tag::create($validate);
+       Tag::create($validate);
         return redirect()->route('admin.tags.index')->with('success','Tag created successfully!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
