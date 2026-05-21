@@ -10,7 +10,7 @@
         {{ $faqs->links() }}
         <x-flash-message/>
         <h1 class="text-2xl font-semibold text-gray-800 mb-6">FAQs</h1>
-        <x-make-button content="faqs"/>
+        <x-buttons.make-button content="faqs"/>
         <div class="flex flex-col gap-4 mt-4">
             @foreach ($faqs as $faq)
                 <div onclick="window.location='{{ route('faqs.show', $faq->id) }}'"
@@ -35,8 +35,8 @@
                         </span>
                     </div>
                     <div class="flex gap-5 mt-5">
-                        <x-edit-button content="faqs" link="{{$faq->id}}"/>
-                        <x-delete-button link="faqs/{{$faq->id}}" content="{{$faq->question}}"/>
+                        <x-buttons.edit-button content="faqs" link="{{$faq->id}}"/>
+                        <x-buttons.delete-button link="faqs/{{$faq->id}}" content="{{$faq->question}}"/>
                     </div>
 
                 </div>

@@ -8,7 +8,7 @@
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
         {{ $categories->links() }}
         <x-flash-message/>
-      <x-make-button content="categories"/>
+      <x-buttons.make-button content="categories"/>
 
         @foreach($categories as $category)
             <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6 group">
@@ -17,9 +17,9 @@
                         <a href="/categories/{{ $category->id }}">{{ $category->name }}</a>
                     </h2>
                     <div class="flex items-center gap-2">
-                        <x-edit-button content="categories" link="{{$category->id}}"/>
+                        <x-buttons.edit-button content="categories" link="{{$category->id}}"/>
 
-                        <x-delete-button link="categories/{{$category->id}}" content="{{$category->name}}" confirm="true" />
+                        <x-buttons.delete-button link="categories/{{$category->id}}" content="{{$category->name}}" confirm="true" />
 
 
                     </div>

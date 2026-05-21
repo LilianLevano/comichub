@@ -49,6 +49,6 @@
             </div>
 
         </div>
-        <x-back-button/>
+        <x-buttons.back-button/>
     </div>
 </x-site-layout>

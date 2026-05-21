@@ -13,7 +13,7 @@
                 <h1 class="text-3xl font-semibold tracking-tight text-gray-900">Users</h1>
                 <span class="text-sm text-gray-400">{{ $users->total() }} users</span>
             </div>
-            <x-make-button content="users"/>
+            <x-buttons.make-button content="users"/>
         </div>
 
         {{ $users->links() }}
@@ -57,8 +57,8 @@
                         @endif
                         <p>Joined {{ $user->created_at->format('d M Y') }}</p>
                     </div>
-                    <x-edit-button content="users" link="{{$user->id}}"/>
-                    <x-delete-button link="users/{{$user->id}}" content="{{$user->name}}"/>
+                    <x-buttons.edit-button content="users" link="{{$user->id}}"/>
+                    <x-buttons.delete-button link="users/{{$user->id}}" content="{{$user->name}}"/>
                 </div>
 
             @endforeach

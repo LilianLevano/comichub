@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Buttons;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,6 +21,6 @@ class SaveCreateButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.save-create-button');
+        return view('components.buttons.save-create-button');
     }
 }

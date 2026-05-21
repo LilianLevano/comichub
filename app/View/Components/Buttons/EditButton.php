@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Buttons;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class BackButton extends Component
+class EditButton extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class BackButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.back-button');
+        return view('components.buttons.edit-button');
     }
 }

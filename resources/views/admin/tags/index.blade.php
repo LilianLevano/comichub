@@ -19,7 +19,7 @@
                         </h3>
                     </div>
 
-                    <x-make-button content="tags"/>
+                    <x-buttons.make-button content="tags"/>
                     <x-flash-message/>
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
@@ -43,8 +43,8 @@
                                         </span>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-right space-x-2">
-                                    <x-edit-button content="tags" link="{{ $tag->id }}"/>
-                                    <x-delete-button link="tags/{{ $tag->id }}" content="{{ $tag->name }}"/>
+                                    <x-buttons.edit-button content="tags" link="{{ $tag->id }}"/>
+                                    <x-buttons.delete-button link="tags/{{ $tag->id }}" content="{{ $tag->name }}"/>
                                 </td>
                             </tr>
 

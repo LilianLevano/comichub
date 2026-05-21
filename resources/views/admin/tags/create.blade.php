@@ -18,8 +18,8 @@
                 />
 
                 <div class="flex justify-between items-center mt-2">
-                    <x-cancel-button/>
-                    <x-save-create-button content="Create"/>
+                    <x-buttons.cancel-button/>
+                    <x-buttons.save-create-button content="Create"/>
                 </div>
             </form>
         </div>

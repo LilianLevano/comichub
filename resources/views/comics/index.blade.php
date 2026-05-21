@@ -2,7 +2,7 @@
     <div class="flex flex-col gap-8 w-[90%] max-w-5xl mx-auto mt-8">
         {{ $comics->links() }}
         <x-flash-message/>
-        <x-create-button-user content="Post a comic!" link="/comics/create"/>
+        <x-buttons.create-button-user content="Post a comic!" link="/comics/create"/>
         @foreach($comics as $comic)
             <div class="bg-white rounded-2xl shadow-md border border-black/10 p-6 flex gap-6 group">
                 <x-comic-image :path="$comic->image_path" :title="$comic->title"/>
