@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::orderBy('created_at', 'desc')->paginate(10);        // order by date, meest recente helemaal boven de lijst
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -27,7 +27,7 @@ class CategoryController extends Controller
 
         Category::create(['name' => $request->name]);
 
-        return redirect()->route('admin.categories.index')->with('success','Category created successfully!');
+        return redirect()->route('admin.categories.index')->with('success','Category created successfully!'); // stuurt een status mee om een flash message te tonen
     }
 
     public function edit($id)

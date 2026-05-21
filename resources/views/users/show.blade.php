@@ -19,7 +19,7 @@
 
                         <x-user.show-avatar-user :user="$user" h="20" w="20"/>
 
-       
+
                     </div>
                 </div>
 
