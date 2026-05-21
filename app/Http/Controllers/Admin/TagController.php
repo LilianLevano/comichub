@@ -13,7 +13,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::withCount('comics')->orderBy('comics_count', 'desc')->get();
+        $tags = Tag::withCount('comics')->orderBy('comics_count', 'desc')->get();   // tag met meeste comics boven de lijst
         return view('admin.tags.index', compact('tags'));
     }
 
@@ -31,7 +31,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name' => ['required', 'string', 'max:30', 'unique:tags,name']
+            'name' => ['required', 'string', 'max:30', 'unique:tags,name' ] //maak de kolom "name" uniek in de table tags
         ]);
 
        Tag::create($validate);
