@@ -13,18 +13,12 @@
                 @method('PUT')
                 <div class="flex flex-col gap-4">
 
-                    {{-- Name --}}
-
                     <x-form-fields.text-input
                         name="name"
                         label="Name"
                         placeholder="e.g. John Doe"
                         value="{{old('name', $user->name)}}"
                     />
-
-
-
-                    {{-- Email --}}
 
                     <x-form-fields.text-input
                         name="email"
@@ -33,30 +27,18 @@
                         value="{{old('email' , $user->email)}}"
                     />
 
+                    <x-form-fields.password-input
+                        name="password"
+                        label="Password"
+                        value="{{old('password')}}"
+                    />
 
-
-                    {{-- Password --}}
-                    <div class="flex flex-col gap-1.5">
-                        <label for="password" class="text-sm font-medium text-gray-700">
-                            Password <span class="text-gray-400 font-normal">(Let it empty to not change it)</span>
-                        </label>
-                        <input type="password" id="password" name="password"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-                               placeholder="••••••••"/>
-                        @error('password')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    {{-- Birthday --}}
                     <x-form-fields.date-input
                         name="birthday"
                         label="Birthday"
                         placeholder=""
                         value="{{old('birthday', $user->birthday)}}"
                     />
-
-                    {{-- Bio --}}
 
                     <x-form-fields.text-area-input
                         name="bio"
@@ -65,8 +47,6 @@
                         value="{{ old('bio', $user->bio) }}"
                         rows="4"
                     />
-
-
 
                     <x-form-fields.image-input
                         name="image"

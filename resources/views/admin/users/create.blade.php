@@ -26,15 +26,11 @@
                         value="{{old('email')}}"
                     />
 
-                    <div class="flex flex-col gap-1.5">
-                        <label for="password" class="text-sm font-medium text-gray-700">Password</label>
-                        <input type="password" id="password" name="password"
-                               class="border border-black/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-                               placeholder="••••••••"/>
-                        @error('password')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    <x-form-fields.password-input
+                        name="password"
+                        label="Password"
+                        value="{{old('password')}}"
+                    />
 
                     <x-form-fields.date-input
                         name="birthday"
@@ -58,8 +54,7 @@
                         accept="image/*"
                         :current-image="null"
                     />
-
-
+                    
 
                     {{-- Is Admin --}}
                     <div class="flex items-center gap-3">

@@ -67,17 +67,6 @@
                             :selected="$comic->tags->pluck('id')->toArray()"
                         />
 
-                        <script>
-                            new TomSelect('#category_id', {
-                                placeholder: 'Search for a category...',
-                                maxOptions: 50,
-                            });
-
-                            new TomSelect('#tags', {
-                                plugins: ['remove_button'],
-                                placeholder: 'Select tags...',
-                            });
-                        </script>
                     </div>
 
                     <div class="flex justify-between items-center mt-2">
